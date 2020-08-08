@@ -1,5 +1,12 @@
+const jwt = require("jsonwebtoken");
+
 class JwtService {
   static generateToken(req, _, next) {
+    console.log(req.passForToken)
+    if (!req.passForToken && !req.passForToken.valid) return next();
+
+    const token = jwt.sign(req.passForToken.user, process.env.JWT_SECRET);
+    req.success = { data: token };
     next();
   }
 
