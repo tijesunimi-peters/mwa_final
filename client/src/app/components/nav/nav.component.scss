@@ -1,0 +1,18 @@
+.nav-wrapper {
+  background-color: black;
+
+  .uk-navbar {
+    background-color: black;
+  }
+}
+
+.uk-navbar-nav>li.uk-active>a {
+  background-color: black;
+  color: #fff;
+}
+
+.uk-link:hover, .uk-contrast a:not([class]):hover {
+  color: #fff;
+  text-decoration: underline;
+  background-color: black;
+}
