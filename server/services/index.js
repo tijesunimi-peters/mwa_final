@@ -5,6 +5,7 @@ const UserService = require("./UserService");
 const EmailService    = require('./EmailService')
 const OrderService = require("./OrderService");
 const ProductService = require("./ProductService");
+const ImageService = require("./ImagesService");
 
 
 
@@ -20,4 +21,5 @@ module.exports = {
   OrderService,
   ProductService,
   verificationService,
+  ImageService
 };
