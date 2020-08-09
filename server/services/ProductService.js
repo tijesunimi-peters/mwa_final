@@ -38,7 +38,6 @@ class ProductService {
 
     static findProductByFarmer(req, _, next) {
         const farmer_id = req.params.farmer_id;
-        console.log(farmer_id);
         const findProductQuery = {
             'farmer._id': farmer_id
         };
