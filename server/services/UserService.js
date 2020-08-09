@@ -8,10 +8,7 @@ class UserService {
       if (err) {
         next(err);
       } else {
-        // req.success = {
-        //   status:200,
-        //   data:req.succes
-        // }
+        
         req.passForToken = {
           valid: true,
           user: { _id: result._id, email: result.email },
