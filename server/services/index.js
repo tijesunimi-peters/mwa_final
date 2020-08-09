@@ -4,6 +4,7 @@ const ResponseService = require("./ResponseService");
 const UserService = require("./UserService");
 const OrderService = require("./OrderService");
 const ProductService = require("./ProductService");
+const checkEmailService = require("./checkEmailService");
 
 module.exports = {
   AuthService,
@@ -12,4 +13,5 @@ module.exports = {
   UserService,
   OrderService,
   ProductService,
+  checkEmailService,
 };
