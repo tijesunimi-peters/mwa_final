@@ -2,7 +2,7 @@
 
 var User = require("./User");
 var Order = require("./Order");
-var Product = require("./product");
+var Product = require("./Product");
 
 module.exports = {
   User,
