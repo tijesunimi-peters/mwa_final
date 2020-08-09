@@ -1,5 +1,10 @@
-<h1>
-  Dashboard
-</h1>
-<a [routerLink]="['profile']">Profile</a>
-<router-outlet></router-outlet>
+<app-nav></app-nav>
+
+<app-center>
+  <h1>
+    Dashboard
+  </h1>
+  <hr>
+  <a [routerLink]="['profile']">Profile</a>
+  <router-outlet></router-outlet>
+</app-center>

@@ -12,7 +12,7 @@ import { Observable, of } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Injectable()
-export class DashboardGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(
     private authService: AuthenticationService,
     private router: Router
