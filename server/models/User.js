@@ -23,6 +23,47 @@ const UserSchema = new Schema({
       unique: true,
     },
   },
+
+  billing: {
+    city: {
+      type: String,
+    },
+    state: {
+      type: String,
+    },
+    zipcode: {
+      type: Number,
+      min: [6, "zipcode length should be minimum 6 chars"],
+    },
+  },
+  address: {
+    city: {
+      type: String,
+    },
+    state: {
+      type: String,
+    },
+    zipcode: {
+      type: {
+        type: Number,
+        min: [6, "zipcode length should be minimum 6 chars"],
+      },
+    },
+    buliding: {
+      blg_no: {
+        type: Number,
+      },
+      room_no: {
+        type: Number,
+      },
+    },
+  },
+  role: {
+    type: String,
+    default: "basic",
+    enum: ["customer", "superuser", "farmer"],
+    required: true,
+  },
 });
 
 UserSchema.pre("save", function (next) {

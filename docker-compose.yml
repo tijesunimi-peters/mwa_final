@@ -41,16 +41,15 @@ services:
   mongo-express:
     image: mongo-express
     container_name: mf_mongo-express
-    environment: 
-      ME_CONFIG_MONGODB_SERVER: mongodb
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+    env_file: 
+      - .docker-compose.env
     networks: 
       - backend
     ports: 
       - "8090:8081"
     depends_on: 
       - mongodb
+    
 
 networks: 
   frontend:

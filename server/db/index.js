@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
+  useCreateIndex: true,
   auth: {
     user: process.env.MONGO_USER,
     password: process.env.MONGO_PASSWORD,
@@ -13,8 +14,8 @@ const URL = process.env.MONGO_URL || `mongodb://${process.env.MONGO_HOST}:${proc
 
 module.exports = (async () => {
   try {
-    console.log(URL);
-    await mongoose.connect(URL, options)
+    await mongoose.connect(URL, options);
+    console.log("Connected to Database....");
   } catch(e) {
     console.error(e);
   }
