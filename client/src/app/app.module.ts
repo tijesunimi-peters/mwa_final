@@ -1,16 +1,19 @@
+import { ContainerModule } from './modules/container/container.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, ContainerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
