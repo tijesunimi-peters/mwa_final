@@ -17,7 +17,17 @@ class ProductService {
     }
 
     static all(req, _, next) {
-        next();
+        
+        Product.find({}, function(err, product) {
+            if (err) return next(err);
+
+            req.success = {
+                status: 200,
+                data: product
+            }
+            next()
+          });
+        
     }
 
     static findProductByFarmer(req, _, next) {

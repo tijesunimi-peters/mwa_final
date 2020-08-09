@@ -11,7 +11,10 @@ var ProductSchema = new mongoose.Schema({
         required: true
     },
     farmer: {
-        _id: mongoose.Types.ObjectId,
+        _id: {
+            type: mongoose.Types.ObjectId,
+            required: [true, "Farmer id is required"],
+        },
         name: String,
         email: String
     }
