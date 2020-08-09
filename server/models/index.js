@@ -1,7 +1,7 @@
 // Export all Models
 
 var User = require("./User");
-var Order = require("./Order");
+var Order = require("./order");
 var Product = require("./Product");
 
 module.exports = {

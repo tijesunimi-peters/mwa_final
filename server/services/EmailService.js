@@ -1,6 +1,5 @@
-const { Worker, isMainThread, parentPort } = require("worker_threads");
-const path = require("path");
-const runService = require('./workerService')
+
+const runService = require('./WorkerService')
 
 class EmailService {
   static sendMail(req, _, next) {

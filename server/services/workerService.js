@@ -25,7 +25,7 @@ function runService(user) {
       product: {
           // Appears in header & footer of e-mails
           name: 'FarmMart',
-          link: 'ouer wesite',
+          link: 'wesite name',
           logo:'https://picsum.photos/seed/picsum/500/500'
           // Optional product logo
           // logo: 'https://mailgen.js/img/logo.png'
@@ -44,7 +44,7 @@ function runService(user) {
               button: {
                   color: 'green',
                   text: 'login',
-                  link: '#'
+                  link: process.env.BASE_FOUNTEND_HOST+'/email-verification',
               }
           },
           outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
