@@ -20,7 +20,7 @@ class ProductService {
         next();
     }
 
-    static findUser(req, _, next) {
+    static findProductByFarmer(req, _, next) {
         next();
     }
 }
