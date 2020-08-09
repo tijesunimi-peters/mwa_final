@@ -7,9 +7,16 @@ const orderSchema = new Schema({
         type: Types.ObjectId,
         required: [true, "Product id is required"],
       },
-      name: String,
+      name: {
+        type: String,
+        required: true,
+      },
+      category: String,
       description: String,
-      price: Number,
+      price: {
+        type: Number,
+        required: true,
+      },
       farmer: {
         _id: {
           type: Types.ObjectId,
@@ -17,7 +24,6 @@ const orderSchema = new Schema({
         },
         name: String,
         email: String,
-        address: String,
       },
     },
   ],

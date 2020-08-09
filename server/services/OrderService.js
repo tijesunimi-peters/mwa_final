@@ -1,3 +1,5 @@
+var express = require("express");
+
 const { Order } = require("../models");
 
 class OrderService {
@@ -8,6 +10,19 @@ class OrderService {
       req.success = {
         status: 200,
         data: order,
+      };
+      next();
+    });
+  }
+
+  static getOrders(req, _, next) {
+    var query = { "customer._id": req.params.customerId };
+    Order.find(query, function (err, found) {
+      if (err) return next(err);
+
+      req.success = {
+        status: 200,
+        data: found,
       };
       next();
     });
