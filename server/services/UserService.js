@@ -17,30 +17,15 @@ class UserService {
       })
       next();
     }).catch(err => next(err));
-
   }
 
-  static login(req, _, next) {
-    let userData = req.body
 
-
-    User.findOne({ email: userData.email }).then((result) => {
-      result.comparePassword(userData.password, (err, result) => {
-        if (result) {
-          req.success = {
-            data: "logged in"
-          }
-          next();
-        }
-        else {
-          next(err)
-        }
-      });
-
-
-    })
-
-
+  static findUser(req, _, next) {
+    User.findOne({ email: req.body.email }).then(function (user) {
+      if (!user) return next({message: "User is not in our records"});
+      req.authUser = user;
+      return next();
+    }).catch(next)
   }
 }
 
