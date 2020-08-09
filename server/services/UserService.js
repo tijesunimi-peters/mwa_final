@@ -10,8 +10,7 @@ class UserService {
         console.log(err)
       }
       else{
-        console.log('i am writhing to config')
-        console.log(result)
+    
         // req.success = {
         //   status:200,
         //   data:req.succes
