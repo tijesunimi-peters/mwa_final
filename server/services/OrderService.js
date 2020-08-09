@@ -17,7 +17,6 @@ class OrderService {
 
   static getOrders(req, _, next) {
     var query = { "customer._id": req.params.customerId };
-    console.log(customerId);
     Order.find(query, function (err, found) {
       if (err) return next(err);
 
