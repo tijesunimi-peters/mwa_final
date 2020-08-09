@@ -1,14 +1,18 @@
+import { ContainerComponent } from './container.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from 'src/app/components/home/home.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "home", component: HomeComponent }
-]
+  {
+    path: "",
+    component: ContainerComponent,
+    children: [{ path: 'home', component: HomeComponent }],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ContainerRoutingModule { }
+export class ContainerRoutingModule {}
