@@ -1,3 +1,4 @@
+import { DashboardGuard } from './dashboard.guard';
 import { ProfileComponent } from './../profile/profile.component';
 import { DashboardComponent } from './dashboard.component';
 import { NgModule } from '@angular/core';
@@ -8,6 +9,8 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    canActivate: [DashboardGuard],
+    canActivateChild: [DashboardGuard],
     children: [
       {
         path: 'profile',

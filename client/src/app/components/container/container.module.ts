@@ -1,4 +1,4 @@
-import { HomeComponent } from './../../components/home/home.component';
+import { HomeComponent } from '../home/home.component';
 import { ContainerRoutingModule } from './container-routing.module';
 
 import { ContainerComponent } from './container.component';

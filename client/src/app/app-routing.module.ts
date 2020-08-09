@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: 'app',
     loadChildren: () =>
-      import('./modules/container/container.module').then(
+      import('./components/container/container.module').then(
         (x) => x.ContainerModule
       ),
   },
