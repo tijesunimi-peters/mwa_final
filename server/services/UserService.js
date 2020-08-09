@@ -7,7 +7,7 @@ class UserService {
     const newUser = new User(req.body);
     newUser.save(function(err,result){
       if(err){
-        console.log(err)
+        next(err);
       }
       else{
     
