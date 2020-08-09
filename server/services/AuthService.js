@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 
 class AuthService {
   static authenticate(req, _, next) {

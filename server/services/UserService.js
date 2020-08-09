@@ -1,5 +1,8 @@
-// Export all services
-// const { User } = require("../models");
+
+const { User } = require("../models");
+const jwt = require('jsonwebtoken');
+const { model } = require('mongoose')
+
 
 
 
@@ -9,45 +12,51 @@ class UserService {
     let user = new User(userData)
     user.save((err, registeredUser) => {
       if (err) {
-        console.log(err)      
+        console.log(err)
       } else {
-        let payload = {subject: registeredUser._id}
-        let token = jwt.sign(payload, 'secretKey')
-        res.status(200).send({token})
+        let payload = { subject: registeredUser._id }
+        let token = jwt.sign(payload,'dg344')
+        req.status(200).send({ token })
       }
     })
-  
     next();
   }
 
   static all(req, _, next) {
-    
-    next();
+
+    let user = User.find({}).then((result) => {
+
+      req.success = ({
+        data: result,
+        status: 200
+      })
+      next();
+    }).catch(err => next(err));
+
   }
 
-  static findUser(req, _, next) {
+  static login(req, _, next) {
     let userData = req.body
-  User.findOne({email: userData.email}, (err, user) => {
-    if (err) {
-      console.log(err)    
-    } else {
-      if (!user) {
-        res.status(401).send('Invalid Email')
-      } else 
-      if ( user.password !== userData.password) {
-        res.status(401).send('Invalid Password')
-      } else {
-        let payload = {subject: user._id}
-        let token = jwt.sign(payload, 'secretKey')
-        res.status(200).send({token})
-      }
-    }
-  })
-    next();
-  }
-  
+
+   
+   User.findOne({ email: userData.email }).then((result)=>{
+      result.comparePassword(userData.password, (err, result) => {
+            if (result) {
+              req.success = {
+                data: "logged in"
+              }
+              next();
+            }
+              else {
+                next(err)
+              }
+    });
   
 
+  })
+
+
+  }
 }
 
 module.exports = UserService;
