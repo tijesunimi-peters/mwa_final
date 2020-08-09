@@ -23,6 +23,7 @@ const UserSchema = new Schema({
       unique: true,
     },
   },
+
   billing: {
     city: {
       type: String,
@@ -77,6 +78,5 @@ UserSchema.methods.comparePassword = function (plaintext, callback) {
 UserSchema.methods.findByEmail = function (email, cb) {
   model("User").findOne({ email }, cb);
 };
-
 
 module.exports = model("User", UserSchema);
