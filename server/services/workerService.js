@@ -4,7 +4,7 @@ var Mailgen = require('mailgen');
 
 function runService(user) {
 
-  const useremail =user.email;
+  const {email} =user;
   const{username} =user;
 
   var transporter = nodemailer.createTransport({
@@ -33,7 +33,7 @@ function runService(user) {
   });
   
   // Prepare email contents
-  var email = {
+  var emailgen = {
       body: {
         greeting: 'Dear',
         signature: 'Sincerely',
@@ -52,11 +52,11 @@ function runService(user) {
   };
   
   // Generate an HTML email using mailgen
-  var emailBody = mailGenerator.generate(email);
+  var emailBody = mailGenerator.generate(emailgen);
 
   var mailOptions = {
     from:process.env.EMAIL_USER_NAME,
-    to: useremail,
+    to: email,
     subject: process.env.WELCOME,
     html: emailBody,
   };
