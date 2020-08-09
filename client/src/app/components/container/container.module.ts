@@ -1,3 +1,4 @@
+import { HomeComponent } from '../home/home.component';
 import { ContainerRoutingModule } from './container-routing.module';
 
 import { ContainerComponent } from './container.component';
@@ -7,11 +8,12 @@ import { CommonModule } from '@angular/common';
 
 
 @NgModule({
-  declarations: [ContainerComponent],
+  declarations: [ContainerComponent, HomeComponent],
   imports: [
     CommonModule,
     ContainerRoutingModule
   ],
-  exports: [ ContainerComponent ]
+  exports: [ ContainerComponent ],
+  bootstrap: [ ContainerComponent ]
 })
 export class ContainerModule { }
