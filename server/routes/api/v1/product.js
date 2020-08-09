@@ -3,7 +3,7 @@ var router = express.Router();
 
 const { ProductService } = require("../../../services");
 
-router.post("/addProducts", ProductService.save);
+router.post("/products", ProductService.save);
 router.get("/products", ProductService.all);
 
 module.exports = router;
