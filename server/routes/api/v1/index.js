@@ -4,9 +4,11 @@ var router = express.Router();
 var usersApi = require("./users");
 var authApi = require("./auth");
 var orderApi = require("./order");
+var prodApi = require("./product");
 
 router.use(authApi);
 router.use(usersApi);
+router.use(prodApi);
 router.use(orderApi);
 
 router.use(function (req, _, next) {
