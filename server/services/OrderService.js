@@ -12,6 +12,8 @@ class OrderService {
       next();
     });
   }
+
+  static getOrders(req, _, next) {}
 }
 
 module.exports = OrderService;
