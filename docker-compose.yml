@@ -41,6 +41,8 @@ services:
   mongo-express:
     image: mongo-express
     container_name: mf_mongo-express
+    env_file: 
+      - .docker-compose.env
     networks: 
       - backend
     ports: 

@@ -21,6 +21,7 @@ class AuthService {
   static isAuthenticated(req, _, next) {
     next();
   }
+
 }
 
 module.exports = AuthService;

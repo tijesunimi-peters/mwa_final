@@ -30,7 +30,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./uikit/js/jquery.js",
+              "./uikit/js/uikit.min.js"
+            ]
           },
           "configurations": {
             "production": {

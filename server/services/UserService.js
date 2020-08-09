@@ -1,10 +1,28 @@
-
+// Export all services
 const { User } = require("../models");
-const jwt = require('jsonwebtoken');
+
 
 class UserService {
   static save(req, _, next) {
-    next();
+    const newUser = new User(req.body);
+    newUser.save(function(err,result){
+      if(err){
+        console.log(err)
+      }
+      else{
+    
+        // req.success = {
+        //   status:200,
+        //   data:req.succes
+        // }
+        req.passForToken = {
+          valid: true,
+          user:  { _id: result._id, email: result.email }
+        }
+        next();
+      }
+    })
+   
   }
 
   static all(req, _, next) {
