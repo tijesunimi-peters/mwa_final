@@ -14,23 +14,20 @@ WORKDIR /etc/nginx/html
 # USER myuser
 
 ENV NGINX_HOST=0.0.0.0
-ENV NGINX_PORT=${PORT}
+ENV NGINX_PORT=80
 
 # Expose is NOT supported by Heroku
 # EXPOSE 5000 		
 
 # Run the image as a non-root user
-RUN adduser myuser --disabled-login --disabled-password
-USER myuser
+# RUN adduser myuser --disabled-login --disabled-password
+# USER myuser
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku			
 # sudo systemctl start nginx
 RUN ls -al 
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
-
-# RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 # CMD gunicorn --bind 0.0.0.0:$PORT wsgi 
-CMD nginx -g daemon off
+CMD ["/bin/bash", "-c", "nginx -g 'daemon off;'"]
 
