@@ -20,7 +20,7 @@ ENV NGINX_PORT=${PORT}
 # EXPOSE 5000 		
 
 # Run the image as a non-root user
-RUN adduser -D myuser
+RUN adduser myuser --disabled-login --disabled-password
 USER myuser
 
 # Run the app.  CMD is required to run on Heroku
@@ -28,9 +28,9 @@ USER myuser
 # sudo systemctl start nginx
 RUN ls -al 
 
-# ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
-# RUN ["chmod", "+x", "/docker-entrypoint.sh"]
+RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 # CMD gunicorn --bind 0.0.0.0:$PORT wsgi 
 CMD nginx -g daemon off
 
