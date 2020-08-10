@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { ErrorComponent } from './components/error/error.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { BrowseFarmersComponent } from './component/browse-farmers/browse-farmers.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SignupComponent } from './components/signup/signup.component';
     ErrorComponent,
     SigninComponent,
     SignupComponent,
+    BrowseFarmersComponent,
   ],
   imports: [
     BrowserModule,
