@@ -58,17 +58,13 @@ class ProductService {
         const removeQuery = {
             _id:product_id
         };
-        // var user_id = req.params.product_id;
-        console.log("hi")
    
-        Product.deleteOne(removeQuery, function (err, docsArr) {
+        Product.deleteOne(removeQuery, function (err) {
             if (err) 
                 return next(err);
-            console.log(docsArr)
             
 
-        }).then((result)=>{
-            console.log(result)
+        }).then(()=>{
             req.success = {
                 status: 200,
                 data: "Deleted!"
