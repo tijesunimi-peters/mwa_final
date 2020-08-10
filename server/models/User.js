@@ -64,6 +64,11 @@ const UserSchema = new Schema({
     enum: ["customer", "superuser", "farmer"],
     required: true,
   },
+    rateing:{
+      type:Number,
+      default:0
+    
+  }
 });
 
 UserSchema.pre("save", function (next) {

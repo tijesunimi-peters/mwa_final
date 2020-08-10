@@ -2,11 +2,11 @@ const AuthService = require("./AuthService");
 const JwtService = require("./JwtService");
 const ResponseService = require("./ResponseService");
 const UserService = require("./UserService");
-const EmailService    = require('./EmailService')
+const EmailService    = require('./EmailService');
 const OrderService = require("./OrderService");
 const ProductService = require("./ProductService");
-const FarmersService = require("./FarmersService")
-
+const FarmersService = require("./FarmersService");
+const RatingService = require('./RatingService');
 
 const verificationService = require("./verificationService");
 
@@ -20,5 +20,6 @@ module.exports = {
   OrderService,
   ProductService,
   verificationService,
-  FarmersService
+  FarmersService,
+  RatingService
 };
