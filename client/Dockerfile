@@ -14,7 +14,7 @@ WORKDIR /etc/nginx/html
 # USER myuser
 
 ENV NGINX_HOST=0.0.0.0
-ENV NGINX_PORT=80
+ENV NGINX_PORT=${PORT}
 
 # Expose is NOT supported by Heroku
 # EXPOSE 5000 		
