@@ -1,7 +1,7 @@
 const { User } = require("../models");
 
 class Farmers {
-  static getAllFarmers(req, _, next) {
+  static getAllFarmers(req, _ , next) {
     User.find({ role: "farmer" }, function (err, result) {
       if (err) {
         next(err);
@@ -13,5 +13,6 @@ class Farmers {
       next();
     });
   }
+
 }
 module.exports = Farmers;
