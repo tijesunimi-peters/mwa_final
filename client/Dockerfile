@@ -20,8 +20,8 @@ ENV NGINX_PORT=${PORT}
 # EXPOSE 5000 		
 
 # Run the image as a non-root user
-# RUN adduser -D myuser
-# USER myuser
+RUN adduser -D myuser
+USER myuser
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku			
