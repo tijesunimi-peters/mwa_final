@@ -10,12 +10,26 @@ class OrderService {
       if (err) return next(err);
       req.success = {
         status: 200,
-        data: order,
+        data: order
       };
       next();
     });
   }
 
+  static updateStatus(req, _, next) {
+    const { id } = req.body;
+    const { status } = req.body;
+
+    Order.updateOne({ _id: id }, { $set: { status: status } })
+      .then(result => {
+        req.success = { data: "success" };
+        next();
+      })
+      .catch(err => {
+        next(err);
+      });
+  }
+  
   static getOrders(req, _, next) {
     var query = { "customer._id": req.params.customerId };
     Order.find(query, function (err, found) {
@@ -23,7 +37,7 @@ class OrderService {
 
       req.success = {
         status: 200,
-        data: found,
+        data: found
       };
       next();
     });

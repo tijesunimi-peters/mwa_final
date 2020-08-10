@@ -5,6 +5,19 @@
     Dashboard
   </h1>
   <hr>
-  <a [routerLink]="['profile']">Profile</a>
-  <router-outlet></router-outlet>
+  <div class="uk-grid">
+    <div class="uk-width-3-10">
+      <ul>
+        <li>
+          <a [routerLink]="['profile']">Profile</a>
+        </li>
+        <li>
+          <a [routerLink]="['add-product']">Add Product</a>
+        </li>
+      </ul>
+    </div>
+    <div class="uk-width-7-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </app-center>
