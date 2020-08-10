@@ -1,7 +1,8 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model ,Types} = require("mongoose");
 const { hashSync, compareSync } = require("bcrypt");
 
 const UserSchema = new Schema({
+ 
   username: {
     type: String,
     required: [true, "Username is required"],
@@ -64,7 +65,7 @@ const UserSchema = new Schema({
     enum: ["customer", "superuser", "farmer"],
     required: true,
   },
-    rateing:{
+  rating:{
       type:Number,
       default:0
     

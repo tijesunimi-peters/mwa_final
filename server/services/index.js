@@ -6,7 +6,7 @@ const EmailService    = require('./EmailService');
 const OrderService = require("./OrderService");
 const ProductService = require("./ProductService");
 const FarmersService = require("./FarmersService");
-const RatingService = require('./RatingService');
+
 
 const verificationService = require("./verificationService");
 
@@ -20,6 +20,5 @@ module.exports = {
   OrderService,
   ProductService,
   verificationService,
-  FarmersService,
-  RatingService
+  FarmersService
 };
