@@ -4,9 +4,19 @@
 <!-- <form [formGroup]="myForm" (ngSubmit)="onSubmmit()">
     <input type="text" name="email" [formControl]="myForm.get('email')">
 </form> -->
-<form class="uk-form">
-    <div class="uk-form-password">
+<form class=".uk-form-horizontal">
+    <!-- <div class="uk-form-password">
         <input type="password">
-        <a href="" class="uk-form-password-toggle" data-uk-form-password>...</a>
-    </div>
+        <a href="" class="uk-form-password-toggle" data-uk-form-password>Submit</a>
+    </div> -->
+    <fieldset data-uk-margin>
+        <input type="text" placeholder="">
+        <input type="password" placeholder="">
+        <select>
+            <option>Name</option>
+            <option>...</option>
+        </select>
+        <button class="uk-button">...</button>
+        <label><input type="checkbox"> ...</label>
+    </fieldset>
 </form>
