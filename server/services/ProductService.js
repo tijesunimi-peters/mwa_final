@@ -1,5 +1,6 @@
 // Export all services
 const {Product} = require("../models");
+const {Types} = require('mongoose');
 
 class ProductService {
     static save(req, _, next) {
@@ -52,21 +53,27 @@ class ProductService {
 
     }
     static removeProduct(req, _, next) {
-        const product_id = req.params.product_id;
+        
+        const product_id = new Types.ObjectId(req.params.product_id);
         const removeQuery = {
-            '_id': product_id
+            _id:product_id
         };
-
-        Product.remove(removeQuery, function (err, docsArr) {
+        // var user_id = req.params.product_id;
+        console.log("hi")
+   
+        Product.deleteOne(removeQuery, function (err, docsArr) {
             if (err) 
                 return next(err);
+            console.log(docsArr)
             
+
+        }).then((result)=>{
+            console.log(result)
             req.success = {
                 status: 200,
                 data: "Deleted!"
             }
             next();
-
         })
 
     }
