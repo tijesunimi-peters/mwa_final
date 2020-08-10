@@ -8,7 +8,7 @@ const orderSchema = new Schema({
         required: [true, "Product id is required"],
       },
       name: String,
-      description: String,
+      description: String, 
       price: Number,
       farmer: {
         _id: {
