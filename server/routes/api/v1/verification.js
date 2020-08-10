@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
-const { verificationService } = require("../../../services");
+const { VerificationService } = require("../../../services");
 
-router.post("/verify/email", verificationService.checkEmail);
-router.post("/verify/username", verificationService.checkUsername);
+router.post("/verify/email", VerificationService.checkEmail);
+router.post("/verify/username", VerificationService.checkUsername);
 
 module.exports = router;

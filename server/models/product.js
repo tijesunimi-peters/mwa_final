@@ -10,6 +10,9 @@ var ProductSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    image:{
+        type:String
+    },
     farmer: {
         _id: {
             type: mongoose.Types.ObjectId,
