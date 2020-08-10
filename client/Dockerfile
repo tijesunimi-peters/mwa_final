@@ -1,5 +1,9 @@
 FROM nginx:latest
 
+# Run the image as a non-root user
+RUN adduser --disabled-login myuser
+USER myuser
+
 # Add our code
 ADD ./.nginx/templates /etc/nginx/templates
 ADD ./dist/client /etc/nginx/html
@@ -8,9 +12,6 @@ WORKDIR /etc/nginx/html
 ENV NGINX_HOST=0.0.0.0
 ENV NGINX_PORT=${PORT}
 
-# Run the image as a non-root user
-RUN adduser -D myuser
-USER myuser
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku			
