@@ -38,8 +38,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.navigate(this.authService.isAuthenticated());
-    // return true;
+    // return this.navigate(this.authService.isAuthenticated());
+    return true;
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,
@@ -49,7 +49,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.navigate(this.authService.isAuthenticated());
-    // return true;
+    // return this.navigate(this.authService.isAuthenticated());
+    return true;
   }
 }
