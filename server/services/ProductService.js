@@ -1,19 +1,15 @@
 // Export all services
 const {Product} = require("../models");
-const upload =  require("../../../services/ProductImagesService");
-
 
 class ProductService {
-    singleUpload = upload.single(Product.image);
     static save(req, _, next) {
+        if(req.file) req.body.image = req.file.location;
+        
         const newProduct = new Product(req.body);
         newProduct.save(function (err, product) {
             if (err) 
                 return next(err);
-            
-            singleUpload(req, res, function(err){
-                return res.json({'imageUrl': req.file.location })
-            }); 
+
             req.success = {
                 status: 200,
                 data: product
@@ -27,6 +23,7 @@ class ProductService {
         Product.find({}, function (err, product) {
             if (err) 
                 return next(err);
+            
             req.success = {
                 status: 200,
                 data: product
@@ -44,8 +41,6 @@ class ProductService {
         Product.find(findProductQuery, function (err, docsArr) {
             if (err) 
                 return next(err);
-            
-
 
             req.success = {
                 status: 200,
@@ -61,12 +56,11 @@ class ProductService {
         const removeQuery = {
             '_id': product_id
         };
+
         Product.remove(removeQuery, function (err, docsArr) {
             if (err) 
                 return next(err);
             
-
-
             req.success = {
                 status: 200,
                 data: "Deleted!"
