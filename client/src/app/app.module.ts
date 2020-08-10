@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { ErrorComponent } from './components/error/error.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { BrowseFarmersComponent } from './component/browse-farmers/browse-farmers.component';
+import { BrowseFarmersComponent} from './components/browse-farmers/browse-farmers.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { BrowseFarmersComponent } from './component/browse-farmers/browse-farmer
     ErrorComponent,
     SigninComponent,
     SignupComponent,
-    BrowseFarmersComponent,
+    BrowseFarmersComponent
+    
   ],
   imports: [
     BrowserModule,
