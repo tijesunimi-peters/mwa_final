@@ -5,11 +5,15 @@ var usersApi = require("./users");
 var authApi = require("./auth");
 var orderApi = require("./order");
 var prodApi = require("./product");
+var verifyUser = require("./verification");
+var farmersApi =require("./farmers")
 
 router.use(authApi);
 router.use(usersApi);
 router.use(prodApi);
 router.use(orderApi);
+router.use(verifyUser);
+router.use(farmersApi);
 
 router.use(function (req, _, next) {
   if (req.success) {
