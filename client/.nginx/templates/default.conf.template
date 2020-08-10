@@ -1,0 +1,10 @@
+
+server {
+  listen $PORT default_server;
+  index index.html;
+  root /usr/share/nginx/html;
+
+  location / {
+    try_files $uri$args $uri$args /index.html;
+  }
+}
