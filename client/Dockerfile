@@ -30,7 +30,7 @@ RUN ls -al
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-RUN ["chmod", "+x", "/docker-entrypoint.sh"]
+# RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 # CMD gunicorn --bind 0.0.0.0:$PORT wsgi 
 CMD nginx -g daemon off
 
