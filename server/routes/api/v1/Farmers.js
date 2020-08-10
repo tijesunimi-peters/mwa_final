@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
-var { Farmers } = require("../../../services");
+var { FarmersService } = require("../../../services");
 
-router.get("/Farmers", Farmers.getAllFarmers);
+router.get("/farmers", FarmersService.getAllFarmers);
 
 module.exports = router;
