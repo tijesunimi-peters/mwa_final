@@ -8,4 +8,5 @@ module.exports = {
   User,
   Product,
   Order,
+
 };

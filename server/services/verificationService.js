@@ -1,6 +1,6 @@
 const { User } = require("../models");
 
-class verificationService {
+class VerificationService {
   static checkEmail(req, _, next) {
     let query = { email: req.body.email };
     User.findOne(query, function (err, user) {
@@ -46,4 +46,4 @@ class verificationService {
   }
 }
 
-module.exports = verificationService;
+module.exports = VerificationService;
