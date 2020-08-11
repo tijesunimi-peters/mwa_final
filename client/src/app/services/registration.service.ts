@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject, from } from 'rxjs';
-import { flatMap, map } from 'rxjs/operators';
+import { Subject, from , of} from 'rxjs';
+import { flatMap, map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from './../constants';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -10,12 +10,12 @@ export class RegistrationService {
   register$ = new Subject();
   user:any;
   myStorage = window.localStorage;
+  verify$ = new Subject();
 
   constructor(
     private http: HttpClient,
     private authService: AuthenticationService
   ) {
-    // this.setupRegistrationPipeline();
   }
 
   get registrationSubject() {
@@ -25,26 +25,28 @@ export class RegistrationService {
   getLocalStorage(){
     return this.myStorage;
   }
+  
+  get verifySubject() {
+    return this.verify$;
+  }
+
+  verifyEmail(email: string) {
+    return this.http.post(Constants.VERIFY_EMAIL_URL, { email })
+  }
+
+  verifyUsername(username: string) {
+    return this.http.post(Constants.VERIFY_USERNAME_URL, { username })
+  }
+
+  verifyToken(token: string) {
+    return this.http.post(Constants.VERIFY_TOKEN_URL, { token })
+  }
 
   setupRegistrationPipeline() {
 
     return this.register$.asObservable().pipe(
       flatMap((user) => {
-        this.user=user
-        return from(this.http.post(Constants.SIGNUP_URL, user)).pipe(
-          map((response: any) => {
-            this.authService.saveToken(response.data);
-            console.log(response)
-            if(response.status==200){
-              this.myStorage.setItem('user',this.user.role);
-              // console.log(this.myStorage.getItem('user'));
-            }
-            // var values=JSON.parse(this.myStorage.getItem('user').pip
-            // console.log(values.role);
-            console.log('dfg')
-            return response;
-          })
-        );
+        return from(this.http.post(Constants.SIGNUP_URL, user))
       })
     );
     

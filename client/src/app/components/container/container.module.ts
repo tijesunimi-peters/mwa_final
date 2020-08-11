@@ -1,4 +1,5 @@
-import { FarmerDashboardService } from './../../services/farmer-dashboard.service';
+import { UniqueEmailValidator } from './../../validators/email.directive';
+import { OrderService } from '../../services/Order.service';
 import { FarmersService } from '../../services/farmers.service';
 import { ProductsService } from '../../services/products.service';
 import { NavModule } from './../nav/nav.module';
@@ -14,6 +15,7 @@ import { CustomersComponent } from '../customers/customers.component';
 import { ProductsComponent } from '../products/products.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UsernameValidatorDirective } from '../../validators/username-validator.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     CustomersComponent,
     FarmersComponent,
     ProductsComponent,
+    UniqueEmailValidator,
+    UsernameValidatorDirective
   ],
   imports: [
     HttpClientModule,
@@ -31,9 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavModule,
     ReactiveFormsModule,
   ],
-  
-  providers: [ProductsService, FarmersService, FarmerDashboardService],
-  exports: [ContainerComponent, ReactiveFormsModule],
+  providers: [ProductsService, FarmersService, OrderService],
+  exports: [ContainerComponent, ReactiveFormsModule, UniqueEmailValidator, UsernameValidatorDirective],
   bootstrap: [ContainerComponent],
 })
 export class ContainerModule {}
