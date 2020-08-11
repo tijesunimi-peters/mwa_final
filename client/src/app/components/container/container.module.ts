@@ -1,4 +1,4 @@
-import { FarmerDashboardService } from './../../services/farmer-dashboard.service';
+import { OrderService } from '../../services/Order.service';
 import { FarmersService } from '../../services/farmers.service';
 import { ProductsService } from '../../services/products.service';
 import { NavModule } from './../nav/nav.module';
@@ -32,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
   ],
   
-  providers: [ProductsService, FarmersService, FarmerDashboardService],
+  providers: [ProductsService, FarmersService, OrderService],
   exports: [ContainerComponent, ReactiveFormsModule],
   bootstrap: [ContainerComponent],
 })
