@@ -44,8 +44,11 @@ class OrderService {
   }
 
   static getOrderforFarmers(req, _, next) {
+
     var query = { products: { $elemMatch: { "farmer._id": new Types.ObjectId(req.params.farmerId)} } } 
     Order.find(query, function (err, found) {
+      console.log(found);
+     
       if (err) return next(err);
 
       req.success = {

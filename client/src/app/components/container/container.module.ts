@@ -1,3 +1,4 @@
+import { FarmerDashboardService } from './../../services/farmer-dashboard.service';
 import { NavModule } from './../nav/nav.module';
 import { FarmersComponent } from './../farmers/farmers.component';
 import { CenterModule } from './../center/center.module';
@@ -17,6 +18,8 @@ import { ProductsComponent } from '../products/products.component';
     CustomersComponent,
     FarmersComponent,
     ProductsComponent,
+  ],providers:[
+    FarmerDashboardService
   ],
   imports: [CommonModule, ContainerRoutingModule, CenterModule, NavModule],
   exports: [ContainerComponent],
