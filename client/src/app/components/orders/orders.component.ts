@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FarmerDashboardService } from 'src/app/services/farmer-dashboard.service';
+import { OrderService } from 'src/app/services/Order.service';
 
 @Component({
   selector: 'app-orders',
@@ -9,7 +9,7 @@ import { FarmerDashboardService } from 'src/app/services/farmer-dashboard.servic
 export class OrdersComponent implements OnInit {
   data:any[];
   headElements = ['CustomerName', 'Product', 'Quantity', 'Status'];
-  constructor(private farmerdash: FarmerDashboardService) {
+  constructor(private farmerdash: OrderService) {
     farmerdash.getOrdersForFarmers('5f3024e6e328ca003951438f').subscribe((res) => {
       this.data = res.data;
     });
