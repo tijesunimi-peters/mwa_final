@@ -1,4 +1,4 @@
-import { ViewProductServicesService } from './../../services/view-product-services.service';
+import { ProductsService } from '../../services/products.service';
 import { NavModule } from './../nav/nav.module';
 import { FarmersComponent } from './../farmers/farmers.component';
 import { CenterModule } from './../center/center.module';
@@ -19,7 +19,7 @@ import { ProductsComponent } from '../products/products.component';
     FarmersComponent,
     ProductsComponent,
   ],
-  providers: [ViewProductServicesService],
+  providers: [ProductsService],
   imports: [CommonModule, ContainerRoutingModule, CenterModule, NavModule],
   exports: [ContainerComponent],
   bootstrap: [ContainerComponent],
