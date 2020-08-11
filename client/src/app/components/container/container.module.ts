@@ -1,4 +1,4 @@
-import { FarmerServicesService } from './../../services/farmer-services.service';
+import { FarmersService } from '../../services/farmers.service';
 import { ProductsService } from '../../services/products.service';
 import { NavModule } from './../nav/nav.module';
 import { FarmersComponent } from './../farmers/farmers.component';
@@ -13,7 +13,6 @@ import { CustomersComponent } from '../customers/customers.component';
 import { ProductsComponent } from '../products/products.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -31,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavModule,
     ReactiveFormsModule,
   ],
-  providers: [ProductsService, FarmerServicesService],
+  providers: [ProductsService, FarmersService],
   exports: [ContainerComponent, ReactiveFormsModule],
   bootstrap: [ContainerComponent],
 })
