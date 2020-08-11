@@ -5,19 +5,71 @@
     Dashboard
   </h1>
   <hr>
+
   <div class="uk-grid">
-    <div class="uk-width-3-10">
-      <ul>
-        <li>
-          <a [routerLink]="['profile']">Profile</a>
-        </li>
-        <li>
-          <a [routerLink]="['add-product']">Add Product</a>
-        </li>
-      </ul>
+    <div class="uk-width-3-10 uk-block uk-block-secondary uk-contrast " >
+      <div class="uk-panel uk-panel-box uk-block-secondary uk-contrast">
+        <h1 class="uk-panel-title">Welcome</h1>
+        <ul class="uk-nav uk-nav-side">
+          <li>
+            <a  [routerLink]="['profile']">Profile</a>
+          </li>
+          <li>
+            <a  [routerLink]="['add-product']">Add Product</a>
+          </li>
+          <li>
+            <a href="#">Order History</a>
+          </li>
+        </ul>
+      </div>
+
     </div>
     <div class="uk-width-7-10">
-      <router-outlet></router-outlet>
+      <h2>New Orders</h2>
+      <table class="uk-table uk-table-striped">
+        <thead>
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+
+          </tr>
+        </tfoot>
+        <tbody>
+
+          <tr *ngFor="let d of data">
+
+            <td> {{d.customer.name}}</td>
+
+            <td *ngFor="let product of d.products">
+              {{product.name}}
+            </td>
+
+
+            <td> {{d.quantity}}</td>
+
+            <div class="uk-margin">
+              <select class="uk-select">
+                <option>Pending</option>
+                <option>Ready</option>
+                <option>Complete</option>
+              </select>
+
+            </div>
+
+
+
+          </tr>
+        </tbody>
+      </table>
+
+
     </div>
+    <router-outlet></router-outlet>
   </div>
+
+
 </app-center>
