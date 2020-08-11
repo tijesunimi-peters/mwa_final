@@ -7,7 +7,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductFormComponent } from '../product-form/product-form.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [DashboardComponent, ProfileComponent, ProductFormComponent],
   imports: [CommonModule, DashboardRoutingModule, CenterModule, NavModule],

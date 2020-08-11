@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 const { hashSync, compareSync } = require("bcrypt");
 
 const UserSchema = new Schema({
@@ -46,7 +46,7 @@ const UserSchema = new Schema({
     zipcode: {
       type: {
         type: Number,
-        min: [6, "zipcode length should be minimum 6 chars"],
+        min: [5, "zipcode length should be minimum 5 chars"],
       },
     },
     buliding: {
@@ -63,6 +63,10 @@ const UserSchema = new Schema({
     default: "basic",
     enum: ["customer", "superuser", "farmer"],
     required: true,
+  },
+  rating: {
+    type: Number,
+    default: 0,
   },
 });
 
