@@ -1,22 +1,119 @@
 <app-center>
-    <p>signup works!</p>
+  <!-- <form #registration="ngForm" (ngSubmit)="onSubmit(registration)" novalidate> -->
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="uk-margin">
+      <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: user"></span>
+        <input
+          class="uk-input uk-form-large"
+          type="text"
+          placeholder="Username"
+          name="username"
+          [formControl]="signupForm.get('username')"
+        />
+        <div class="uk-form-danger" *ngIf="!signupForm.get('username').valid">
+          Please enter a unique username
+        </div>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+        <input
+          class="uk-input uk-form-large"
+          type="email"
+          placeholder="Email address"
+          name="email"
+          [formControl]="signupForm.get('email')"
+        />
+        <div class="uk-form-danger" *ngIf="!signupForm.get('email').valid">
+          Please provide email
+        </div>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: lock"></span>
+        <input
+          class="uk-input uk-form-large"
+          type="password"
+          name="password"
+          placeholder="Set a password"
+          [formControl]="signupForm.get('password')"
+        />
+        <div class="uk-form-danger" *ngIf="!signupForm.get('password').valid">
+          Please provide password
+        </div>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+        <input
+          class="uk-input uk-form-large"
+          type="text"
+          placeholder="City"
+          name="city"
+          [formControl]="signupForm.get('city')"
+        />
+      </div>
+    </div>
+
+    <div class="uk-margin">
+      <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+        <input
+          class="uk-input uk-form-large"
+          type="text"
+          placeholder="State"
+          name="state"
+          id="state"
+          [formControl]="signupForm.get('state')"
+        />
+      </div>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+        <input
+          class="uk-input uk-form-large"
+          type="text"
+          placeholder="zipcode"
+          name="zipcode"
+          id="zipcode"
+          [formControl]="signupForm.get('zipcode')"
+        />
+        <div class="uk-form-danger" *ngIf="!signupForm.get('zipcode').valid">
+          Please provide valid zipcode
+        </div>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+        <input
+          class="uk-input uk-form-large"
+          type="checkbox"
+          name="role"
+          id="role"
+          value="farmer"
+          [formControl]="signupForm.get('role')"
+        />
+        <span>Sign up as a Farmer?</span>
+        <div class="uk-form-danger" *ngIf="!signupForm.get('role').valid">
+          Please provide valid Role
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-margin">
+      <button
+        class="uk-button uk-button-primary uk-button-large uk-width-1-1"
+        type="submit"
+        [disabled]="!signupForm.valid"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
 </app-center>
-<!-- <form [formGroup]="myForm" (ngSubmit)="onSubmmit()">
-    <input type="text" name="email" [formControl]="myForm.get('email')">
-</form> -->
-<form class=".uk-form-horizontal">
-    <!-- <div class="uk-form-password">
-        <input type="password">
-        <a href="" class="uk-form-password-toggle" data-uk-form-password>Submit</a>
-    </div> -->
-    <fieldset data-uk-margin>
-        <input type="text" placeholder="">
-        <input type="password" placeholder="">
-        <select>
-            <option>Name</option>
-            <option>...</option>
-        </select>
-        <button class="uk-button">...</button>
-        <label><input type="checkbox"> ...</label>
-    </fieldset>
-</form>

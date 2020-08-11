@@ -28,7 +28,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     CenterModule,
     DashboardModule,
     NavModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     AuthenticationService,
