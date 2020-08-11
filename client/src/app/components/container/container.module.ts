@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 import { CustomersComponent } from '../customers/customers.component';
 import { ProductsComponent } from '../products/products.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     ContainerComponent,
@@ -19,9 +21,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     FarmersComponent,
     ProductsComponent,
   ],
+  imports: [
+    HttpClientModule,
+    CommonModule,
+    ContainerRoutingModule,
+    CenterModule,
+    NavModule,
+    ReactiveFormsModule,
+  ],
   providers: [ProductsService],
-  imports: [CommonModule, ContainerRoutingModule, CenterModule, NavModule,ReactiveFormsModule],
-  exports: [ContainerComponent,ReactiveFormsModule],
+  exports: [ContainerComponent, ReactiveFormsModule],
   bootstrap: [ContainerComponent],
 })
 export class ContainerModule {}

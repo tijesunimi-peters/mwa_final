@@ -1,61 +1,61 @@
 version: "3.8"
 
-services: 
+services:
   nginx:
     image: nginx
     container_name: mf_nginx
-    ports: 
+    ports:
       - "3200:80"
-    environment: 
+    environment:
       PORT: 80
-    volumes: 
+    volumes:
       - "./client/.nginx/nginx.conf:/etc/nginx/nginx.conf"
       - "./client/.nginx/templates:/etc/nginx/templates"
       - "./client/dist/client:/usr/share/nginx/html"
-    networks: 
+    networks:
       - frontend
-    
+
   api:
     container_name: mf_api
     build: ./server
-    depends_on: 
+    depends_on:
       - mongodb
     ports:
       - "3201:3000"
-    volumes: 
+    volumes:
       - "./server:/app"
-    networks: 
+    networks:
       - backend
       - frontend
-  
+
   mongodb:
     container_name: mf_mongodb
     image: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
-    networks: 
+    ports:
+      - "27017:27017"
+    networks:
       - backend
-    volumes: 
+    volumes:
       - mwafinalmongodata:/data/db
 
   mongo-express:
     image: mongo-express
     container_name: mf_mongo-express
-    env_file: 
+    env_file:
       - .docker-compose.env
-    networks: 
+    networks:
       - backend
-    ports: 
+    ports:
       - "8090:8081"
-    depends_on: 
+    depends_on:
       - mongodb
-    
 
-networks: 
+networks:
   frontend:
   backend:
 
-volumes: 
+volumes:
   mwafinalmongodata:
-    
