@@ -1,4 +1,5 @@
 import { UniqueEmailValidator } from './../../validators/email.directive';
+import { OrderService } from '../../services/Order.service';
 import { FarmersService } from '../../services/farmers.service';
 import { ProductsService } from '../../services/products.service';
 import { NavModule } from './../nav/nav.module';
@@ -34,7 +35,7 @@ import { UsernameValidatorDirective } from '../../validators/username-validator.
     NavModule,
     ReactiveFormsModule,
   ],
-  providers: [ProductsService, FarmersService],
+  providers: [ProductsService, FarmersService, OrderService],
   exports: [ContainerComponent, ReactiveFormsModule, UniqueEmailValidator, UsernameValidatorDirective],
   bootstrap: [ContainerComponent],
 })

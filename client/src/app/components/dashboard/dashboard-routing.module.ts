@@ -1,3 +1,4 @@
+import { OrdersComponent } from './../orders/orders.component';
 import { ProductFormComponent } from './../product-form/product-form.component';
 import { AuthGuard } from '../../auth.guard';
 
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent,
       },
       {
         path: 'add-product',

@@ -18,6 +18,7 @@ import { RegistrationService } from './services/registration.service';
 import { EmailNotificationComponent } from './components/email-notification/email-notification.component';
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     EmailNotificationComponent,
     EmailVerificationComponent,
     NotFoundComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

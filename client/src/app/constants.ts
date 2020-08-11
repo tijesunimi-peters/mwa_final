@@ -8,4 +8,6 @@ export class Constants {
   static VERIFY_EMAIL_URL = `${Constants.VERIFICATION_URL}/email`;
   static VERIFY_USERNAME_URL = `${Constants.VERIFICATION_URL}/username`;
   static VERIFY_TOKEN_URL = `${Constants.VERIFICATION_URL}/token`;
+  static ORDERS_URL = `${Constants.API_BASE}/orders`;
+  static FARMERS_ORDERS_URL = `${Constants.ORDERS_URL}/farmers`;
 }
