@@ -1,12 +1,13 @@
+import { Constants } from './../constants';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ViewprofileService {
+export class ProfileService {
 
-  private _profileUrl: string = "http://localhost:3000/api/v1/users/";
+  private _profileUrl: string = Constants.SIGNUP_URL;
 
   constructor(private http: HttpClient) { }
 
