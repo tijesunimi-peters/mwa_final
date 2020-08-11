@@ -1,3 +1,4 @@
+import { FarmersService } from '../../services/farmers.service';
 import { ProductsService } from '../../services/products.service';
 import { NavModule } from './../nav/nav.module';
 import { FarmersComponent } from './../farmers/farmers.component';
@@ -29,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavModule,
     ReactiveFormsModule,
   ],
-  providers: [ProductsService],
+  providers: [ProductsService, FarmersService],
   exports: [ContainerComponent, ReactiveFormsModule],
   bootstrap: [ContainerComponent],
 })
