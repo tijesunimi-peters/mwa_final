@@ -8,13 +8,26 @@ import { from } from 'rxjs';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  public profile = [];
+  profile: {
+    username: string;
+    email: string;
+    address: {
+      state: string;
+      city: string;
+      street: string;
+      zipcode: string;
+    };
+  } = {
+    username: '',
+    email: '',
+    address: { state: '', city: '', street: '', zipcode: '' },
+  };
 
   constructor(private view: ProfileService) {}
 
   ngOnInit(): void {
     this.view.viewProfile().subscribe((response) => {
-      this.profile = response.data;
+      this.profile = response.data[0];
     });
   }
 }

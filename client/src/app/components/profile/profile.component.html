@@ -1,41 +1,74 @@
 <div formGroupName="address" class="uk-form">
-  <h3>Address</h3>
+  <h3>Profile</h3>
   <div class="uk-form-row">
     <label>
       Name:
-      <input class="uk-form-width-medium" type="text" formControlName="Name" value="{{profile[2].username}}"><br>
+      <input
+        class="uk-form-width-medium"
+        type="text"
+        formControlName="Name"
+        value="{{ profile.username }}"
+      /><br />
     </label>
   </div>
   <div class="uk-form-row">
     <label>
       Email:
-      <input class="uk-form-width-medium" type="text" formControlName="Email" value="{{profile[2].email}}"><br>
+      <input
+        class="uk-form-width-medium"
+        type="text"
+        formControlName="Email"
+        value="{{ profile.email }}"
+      /><br />
+    </label>
+  </div>
+  <div *ngIf="profile.address" class="uk-form-row">
+    <label>
+      Street:
+      <input
+        class="uk-form-width-medium"
+        type="text"
+        formControlName="street"
+        value="{{ profile.address.street }}"
+      /><br />
+    </label>
+  </div>
+  <div *ngIf="profile.address" class="uk-form-row">
+    <label>
+      City:
+      <input
+        class="uk-form-width-medium"
+        type="text"
+        formControlName="city"
+        value="{{ profile.address.city }}"
+      /><br />
+    </label>
+  </div>
+  <div *ngIf="profile.address" class="uk-form-row">
+    <label>
+      State:
+      <input
+        class="uk-form-width-medium"
+        type="text"
+        formControlName="state"
+        value="{{ profile.address.state }}"
+      /><br />
+    </label>
+  </div>
+  <div *ngIf="profile.address" class="uk-form-row">
+    <label>
+      Zip Code:
+      <input
+        class="uk-form-width-medium"
+        type="text"
+        formControlName="zip"
+        value="{{ profile.address.zipcode }}"
+      /><br />
     </label>
   </div>
   <div class="uk-form-row">
-  <label>
-    Street:
-    <input class="uk-form-width-medium" type="text" formControlName="street" value="{{profile[2].address.street}}"><br>
-  </label>
-</div>
-<div class="uk-form-row">
-  <label>
-    City:
-    <input class="uk-form-width-medium" type="text" formControlName="city" value="{{profile[2].address.city}}"><br>
-  </label>
-</div>
-<div class="uk-form-row">
-  <label>
-    State:
-    <input class="uk-form-width-medium" type="text" formControlName="state" value="{{profile[2].address.state}}"><br>
-  </label>
-</div>
-<div class="uk-form-row">
-  <label>
-    Zip Code:
-    <input class="uk-form-width-medium" type="text" formControlName="zip" value="{{profile[2].address.state}}"><br>
-  </label>
-</div>
-<div class="uk-form-row">
-  <button class="uk-button uk-button-primary" type="button" data-uk-button>submit</button>
+    <button class="uk-button uk-button-primary" type="button" data-uk-button>
+      submit
+    </button>
+  </div>
 </div>
