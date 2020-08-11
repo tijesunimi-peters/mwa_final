@@ -4,8 +4,7 @@ import { from } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
-  template: './profile.component.html',
- 
+  templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
@@ -17,7 +16,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
      this.view.viewProfile().subscribe((response)=>{
             this.profile = response.data;
-     })
+         })
   }
   
 }
