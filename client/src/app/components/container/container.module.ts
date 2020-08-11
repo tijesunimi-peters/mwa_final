@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { CustomersComponent } from '../customers/customers.component';
 import { ProductsComponent } from '../products/products.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductsComponent,
   ],
   imports: [
+    HttpClientModule,
     CommonModule,
     ContainerRoutingModule,
     CenterModule,
     NavModule,
     ReactiveFormsModule,
   ],
+  providers: [],
   exports: [ContainerComponent, ReactiveFormsModule],
   bootstrap: [ContainerComponent],
 })

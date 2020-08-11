@@ -13,6 +13,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { RegistrationService } from './services/registration.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     AuthenticationService,
+    RegistrationService,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },
   ],
