@@ -7,10 +7,11 @@ services:
     ports: 
       - "3200:80"
     environment: 
-      NGINX_PORT: 80
+      PORT: 80
     volumes: 
-      - "./nginx.conf:/etc/nginx/nginx.conf"
-      - "./client/dist/client:/etc/nginx/html"
+      - "./client/.nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "./client/.nginx/templates:/etc/nginx/templates"
+      - "./client/dist/client:/usr/share/nginx/html"
     networks: 
       - frontend
     

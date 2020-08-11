@@ -1,15 +1,15 @@
 // Export all services
 const {Product} = require("../models");
+const {Types} = require('mongoose');
 
 class ProductService {
-
     static save(req, _, next) {
+        if(req.file) req.body.image = req.file.location;
+        
         const newProduct = new Product(req.body);
         newProduct.save(function (err, product) {
             if (err) 
                 return next(err);
-            
-
 
             req.success = {
                 status: 200,
@@ -25,8 +25,6 @@ class ProductService {
             if (err) 
                 return next(err);
             
-
-
             req.success = {
                 status: 200,
                 data: product
@@ -44,8 +42,6 @@ class ProductService {
         Product.find(findProductQuery, function (err, docsArr) {
             if (err) 
                 return next(err);
-            
-
 
             req.success = {
                 status: 200,
@@ -53,6 +49,27 @@ class ProductService {
             }
             next();
 
+        })
+
+    }
+    static removeProduct(req, _, next) {
+        
+        const product_id = new Types.ObjectId(req.params.product_id);
+        const removeQuery = {
+            _id:product_id
+        };
+   
+        Product.deleteOne(removeQuery, function (err) {
+            if (err) 
+                return next(err);
+            
+
+        }).then(()=>{
+            req.success = {
+                status: 200,
+                data: "Deleted!"
+            }
+            next();
         })
 
     }

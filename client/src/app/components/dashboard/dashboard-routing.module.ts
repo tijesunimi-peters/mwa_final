@@ -1,3 +1,4 @@
+import { ProductFormComponent } from './../product-form/product-form.component';
 import { AuthGuard } from '../../auth.guard';
 
 import { ProfileComponent } from './../profile/profile.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'add-product',
+        component: ProductFormComponent,
       },
     ],
   },
