@@ -18,9 +18,8 @@ import { ProductsComponent } from '../products/products.component';
     CustomersComponent,
     FarmersComponent,
     ProductsComponent,
-  ],providers:[ViewProductServicesService
-
   ],
+  providers: [ViewProductServicesService],
   imports: [CommonModule, ContainerRoutingModule, CenterModule, NavModule],
   exports: [ContainerComponent],
   bootstrap: [ContainerComponent],
