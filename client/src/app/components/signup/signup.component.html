@@ -88,24 +88,7 @@
         </div>
       </div>
     </div>
-    <div class="uk-margin">
-      <div class="uk-inline uk-width-1-1">
-        <span class="uk-form-icon" uk-icon="icon: mail"></span>
-        <input
-          class="uk-input uk-form-large"
-          type="checkbox"
-          name="role"
-          id="role"
-          value="farmer"
-          [formControl]="signupForm.get('role')"
-        />
-        <span>Sign up as a Farmer?</span>
-        <div class="uk-form-danger" *ngIf="!signupForm.get('role').valid">
-          Please provide valid Role
-        </div>
-      </div>
-    </div>
-
+    
     <div class="uk-margin">
       <button
         class="uk-button uk-button-primary uk-button-large uk-width-1-1"

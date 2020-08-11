@@ -13,7 +13,7 @@ export class RegistrationService {
     private http: HttpClient,
     private authService: AuthenticationService
   ) {
-    this.setupRegistrationPipeline();
+    // this.setupRegistrationPipeline();
   }
 
   get registrationSubject() {
@@ -21,11 +21,12 @@ export class RegistrationService {
   }
 
   setupRegistrationPipeline() {
-    this.register$.asObservable().pipe(
+    return this.register$.asObservable().pipe(
       flatMap((user) => {
         return from(this.http.post(Constants.SIGNUP_URL, user)).pipe(
           map((response: any) => {
             this.authService.saveToken(response.data);
+            return response;
           })
         );
       })
