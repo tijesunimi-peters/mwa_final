@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { FarmerServicesService } from './../../services/farmer-services.service';
+=======
+import { ProductsService } from '../../services/products.service';
+>>>>>>> 6b864ad52d19952c9f645af087abb7055abd7690
 import { NavModule } from './../nav/nav.module';
 import { FarmersComponent } from './../farmers/farmers.component';
 import { CenterModule } from './../center/center.module';
@@ -10,6 +14,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomersComponent } from '../customers/customers.component';
 import { ProductsComponent } from '../products/products.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,11 +26,24 @@ import { ProductsComponent } from '../products/products.component';
     FarmersComponent,
     ProductsComponent,
   ],
+<<<<<<< HEAD
   imports: [CommonModule, ContainerRoutingModule, CenterModule, NavModule],
 
   providers : [FarmerServicesService],
   
   exports: [ContainerComponent],
+=======
+  imports: [
+    HttpClientModule,
+    CommonModule,
+    ContainerRoutingModule,
+    CenterModule,
+    NavModule,
+    ReactiveFormsModule,
+  ],
+  providers: [ProductsService],
+  exports: [ContainerComponent, ReactiveFormsModule],
+>>>>>>> 6b864ad52d19952c9f645af087abb7055abd7690
   bootstrap: [ContainerComponent],
 })
 export class ContainerModule {}
