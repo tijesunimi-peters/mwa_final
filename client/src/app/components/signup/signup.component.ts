@@ -58,6 +58,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     this.registrationService.registrationSubject.next(this.signupForm.value);
+    console.log(this.signupForm.value);
   }
 
   ngOnDestroy() {

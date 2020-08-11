@@ -8,6 +8,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 @Injectable()
 export class RegistrationService {
   register$ = new Subject();
+  user:any;
+  myStorage = window.localStorage;
 
   constructor(
     private http: HttpClient,
@@ -20,16 +22,31 @@ export class RegistrationService {
     return this.register$;
   }
 
+  getLocalStorage(){
+    return this.myStorage;
+  }
+
   setupRegistrationPipeline() {
+
     return this.register$.asObservable().pipe(
       flatMap((user) => {
+        this.user=user
         return from(this.http.post(Constants.SIGNUP_URL, user)).pipe(
           map((response: any) => {
             this.authService.saveToken(response.data);
+            console.log(response)
+            if(response.status==200){
+              this.myStorage.setItem('user',this.user.role);
+              // console.log(this.myStorage.getItem('user'));
+            }
+            // var values=JSON.parse(this.myStorage.getItem('user').pip
+            // console.log(values.role);
+            console.log('dfg')
             return response;
           })
         );
       })
     );
+    
   }
 }

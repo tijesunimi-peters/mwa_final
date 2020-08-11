@@ -1,7 +1,10 @@
 <h2>Orders</h2>
 <table class="uk-table uk-table-striped">
     <thead>
+        <!-- <div *ngIf ="customerLogged"></div>
+        <div *ngIf = "farmerLogged"> -->
         <tr>
+           
             <th *ngFor="let head of headElements" scope="col">{{head}} </th>
 
         </tr>
@@ -32,8 +35,7 @@
                 </select>
 
             </div>
-
-
+        <!-- </div> -->
 
         </tr>
     </tbody>

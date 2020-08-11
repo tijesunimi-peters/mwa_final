@@ -13,7 +13,11 @@ export class OrdersComponent implements OnInit {
     farmerdash.getOrdersForFarmers('5f3024e6e328ca003951438f').subscribe((res) => {
       this.data = res.data;
     });
-  }
+
+    let userRole = farmerdash.getUserRole();
+
+}
+
 
   ngOnInit(): void {
   }
