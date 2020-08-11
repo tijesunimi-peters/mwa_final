@@ -1,102 +1,170 @@
 <app-center>
-  <!-- <form #registration="ngForm" (ngSubmit)="onSubmit(registration)" novalidate> -->
-  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
-    <div class="uk-margin">
-      <div class="uk-inline uk-width-1-1">
-        <span class="uk-form-icon" uk-icon="icon: user"></span>
-        <input
-          class="uk-input uk-form-large"
-          type="text"
-          placeholder="Username"
-          name="username"
-          [formControl]="signupForm.get('username')"
-        />
-        <div class="uk-form-danger" *ngIf="!signupForm.get('username').valid">
-          Please enter a unique username
-        </div>
-      </div>
-    </div>
-    <div class="uk-margin">
-      <div class="uk-inline uk-width-1-1">
-        <span class="uk-form-icon" uk-icon="icon: mail"></span>
-        <input
-          class="uk-input uk-form-large"
-          type="email"
-          placeholder="Email address"
-          name="email"
-          [formControl]="signupForm.get('email')"
-        />
-        <div class="uk-form-danger" *ngIf="!signupForm.get('email').valid">
-          Please provide email
-        </div>
-      </div>
-    </div>
-    <div class="uk-margin">
-      <div class="uk-inline uk-width-1-1">
-        <span class="uk-form-icon" uk-icon="icon: lock"></span>
-        <input
-          class="uk-input uk-form-large"
-          type="password"
-          name="password"
-          placeholder="Set a password"
-          [formControl]="signupForm.get('password')"
-        />
-        <div class="uk-form-danger" *ngIf="!signupForm.get('password').valid">
-          Please provide password
-        </div>
-      </div>
-    </div>
-    <div class="uk-margin">
-      <div class="uk-inline uk-width-1-1">
-        <span class="uk-form-icon" uk-icon="icon: mail"></span>
-        <input
-          class="uk-input uk-form-large"
-          type="text"
-          placeholder="City"
-          name="city"
-          [formControl]="signupForm.get('city')"
-        />
-      </div>
-    </div>
-
-    <div class="uk-margin">
-      <div class="uk-inline uk-width-1-1">
-        <span class="uk-form-icon" uk-icon="icon: mail"></span>
-        <input
-          class="uk-input uk-form-large"
-          type="text"
-          placeholder="State"
-          name="state"
-          id="state"
-          [formControl]="signupForm.get('state')"
-        />
-      </div>
-    </div>
-    <div class="uk-margin">
-      <div class="uk-inline uk-width-1-1">
-        <span class="uk-form-icon" uk-icon="icon: mail"></span>
-        <input
-          class="uk-input uk-form-large"
-          type="text"
-          placeholder="zipcode"
-          name="zipcode"
-          id="zipcode"
-          [formControl]="signupForm.get('zipcode')"
-        />
-        <div class="uk-form-danger" *ngIf="!signupForm.get('zipcode').valid">
-          Please provide valid zipcode
-        </div>
-      </div>
-    </div>
-    
-    <div class="uk-margin">
-      <button
-        class="uk-button uk-button-primary uk-button-large uk-width-1-1"
-        type="submit"
-        [disabled]="!signupForm.valid"
+  <div class="uk-block uk-block-secondary uk-contrast uk-block-large">
+    <div class="uk-container">
+      <h1>FarmArt</h1>
+      <hr />
+      <h2>Sign Up</h2>
+      <ul *ngIf="errors.length > 0">
+        <li *ngFor="let error of errors">
+          <small class="uk-form-danger farmart-error-display">{{
+            error
+          }}</small>
+        </li>
+      </ul>
+      <form
+        [formGroup]="signupForm"
+        (ngSubmit)="onSubmit()"
+        class="uk-form"
+        novalidate
       >
-        Submit
-      </button>
+        <div class="uk-row uk-margin-bottom">
+          <div class="uk-width-medium-1-3">
+            <div class="uk-panel">
+              <span class="uk-form-icon" uk-icon="icon: user"></span>
+              <input
+                class="uk-form-large uk-form-width-large uk-contrast"
+                type="text"
+                placeholder="Username"
+                name="username"
+                [formControl]="signupForm.get('username')"
+                usernameValidator
+              />
+              <div
+                class="uk-form-danger farmart-error-display"
+                *ngIf="signupForm.controls['username']?.errors?.required"
+              >
+                Please enter a unique username
+              </div>
+              <div
+                class="uk-form-danger farmart-error-display"
+                *ngIf="signupForm.controls['username']?.errors?.uniqueUsername"
+              >
+                {{ signupForm.controls["username"]?.errors?.uniqueUsername }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="uk-row uk-margin-bottom">
+          <div class="uk-width-medium-1-3">
+            <div class="uk-panel">
+              <span class="uk-form-icon" uk-icon="icon: mail"></span>
+              <input
+                class="uk-form-large uk-form-width-large uk-contrast"
+                type="email"
+                placeholder="Email address"
+                name="email"
+                [formControl]="signupForm.get('email')"
+                uniqueEmail
+              />
+              <div
+                class="uk-form-danger farmart-error-display"
+                *ngIf="signupForm.controls['email']?.errors?.required"
+              >
+                Please provide email
+              </div>
+              <div
+                class="uk-form-danger farmart-error-display"
+                *ngIf="signupForm.controls['email']?.errors?.uniqueEmail"
+              >
+                {{ signupForm.controls["email"]?.errors?.uniqueEmail }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="uk-row uk-margin-bottom">
+          <div class="uk-width-medium-1-3">
+            <div class="uk-panel">
+              <span class="uk-form-icon" uk-icon="icon: lock"></span>
+              <input
+                class="uk-form-large uk-form-width-large uk-contrast"
+                type="password"
+                name="password"
+                placeholder="Set a password"
+                [formControl]="signupForm.get('password')"
+              />
+              <div
+                class="uk-form-danger farmart-error-display"
+                *ngIf="!signupForm.get('password').valid"
+              >
+                Please provide password
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="uk-row uk-margin-bottom">
+          <div class="uk-width-medium-1-3">
+            <div class="uk-panel">
+              <span class="uk-form-icon" uk-icon="icon: mail"></span>
+              <input
+                class="uk-form-large uk-form-width-large uk-contrast"
+                type="text"
+                placeholder="City"
+                name="city"
+                [formControl]="signupForm.get('city')"
+              />
+              <div
+                class="uk-form-danger farmart-error-display"
+                *ngIf="!signupForm.get('city').valid"
+              >
+                City is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="uk-row uk-margin-bottom">
+          <div class="uk-width-medium-1-3">
+            <div class="uk-panel">
+              <span class="uk-form-icon" uk-icon="icon: mail"></span>
+              <input
+                class="uk-form-large uk-form-width-large uk-contrast"
+                type="text"
+                placeholder="State"
+                name="state"
+                id="state"
+                [formControl]="signupForm.get('state')"
+              />
+              <div
+                class="uk-form-danger farmart-error-display"
+                *ngIf="!signupForm.get('state').valid"
+              >
+                State is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="uk-row uk-margin-bottom">
+          <div class="uk-width-medium-1-3">
+            <div class="uk-panel">
+              <span class="uk-form-icon" uk-icon="icon: mail"></span>
+              <input
+                class="uk-form-large uk-form-width-large uk-contrast"
+                type="text"
+                placeholder="zipcode"
+                name="zipcode"
+                id="zipcode"
+                [formControl]="signupForm.get('zipcode')"
+              />
+              <div
+                class="uk-form-danger farmart-error-display"
+                *ngIf="!signupForm.get('zipcode').valid"
+              >
+                Please provide valid zipcode
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <button
+            class="uk-button uk-button-primary uk-button-large"
+            type="submit"
+            [disabled]="!signupForm.valid"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </app-center>

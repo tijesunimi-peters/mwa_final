@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return isAuth$.pipe(
       flatMap((isAuth) => {
         if (!isAuth) {
-          return this.router.navigate(['error']);
+          return this.router.navigate(['signin']);
         }
 
         return of(isAuth);

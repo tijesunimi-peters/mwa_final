@@ -5,7 +5,7 @@ import { Constants } from '../constants';
 @Injectable({
   providedIn: 'root',
 })
-export class FarmerDashboardService {
+export class OrderService {
   constructor(private http: HttpClient) {}
 
   getOrdersForFarmers(id:string): any {
