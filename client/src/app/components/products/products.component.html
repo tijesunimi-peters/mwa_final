@@ -64,9 +64,8 @@
                       <p><span>Category</span>   :  <span>{{d.category}}</span></p>
                       <p><span>FarmerName</span>   :  <span>{{d.farmer.name}}</span></p>
                       <p><span>Price</span>   :  <span>{{d.price}}</span></p>
-
-                    </div>
-                    <button class="uk-button-success" type="button">Add-TO-Cart</button>
+                   </div>
+                    <button class="uk-button-success" type="button"  (click)="addToCart(d)">Add-TO-Cart</button>
                  
                 </div>
             </div>

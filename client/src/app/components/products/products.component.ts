@@ -9,11 +9,22 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
   data: any;
 
-  constructor(private viewProduct: ProductsService) {
-    viewProduct.getproducts().subscribe((result: any) => {
+  constructor(private viewProductService: ProductsService) {
+    viewProductService.getproducts().subscribe((result: any) => {
       this.data = result.data;
     });
   }
 
   ngOnInit(): void {}
-}
+  
+    addToCart(product){
+      this.viewProductService.addProduct(product);
+    }
+    
+  }
+      // this.values += event.target.attri
+      // console.log(this.values.name);
+      
+    //  this.viewProductService.addProduct();
+    
+
