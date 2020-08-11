@@ -15,6 +15,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationService } from './services/registration.service';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RegistrationService } from './services/registration.service';
     ErrorComponent,
     SigninComponent,
     SignupComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

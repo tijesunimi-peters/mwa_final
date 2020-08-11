@@ -1,0 +1,40 @@
+<h2>New Orders</h2>
+<table class="uk-table uk-table-striped">
+    <thead>
+        <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+
+        </tr>
+    </tfoot>
+    <tbody>
+
+        <tr *ngFor="let d of data">
+
+            <td> {{d.customer.name}}</td>
+
+            <td *ngFor="let product of d.products">
+                {{product.name}}
+            </td>
+
+
+            <td> {{d.quantity}}</td>
+
+            <div class="uk-margin">
+                <select class="uk-select">
+                    <option>Pending</option>
+                    <option>Ready</option>
+                    <option>Complete</option>
+                </select>
+
+            </div>
+
+
+
+        </tr>
+    </tbody>
+</table>
