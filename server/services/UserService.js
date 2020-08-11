@@ -1,5 +1,7 @@
 // Export all services
 const { User } = require("../models");
+const { Types} = require("mongoose");
+
 
 class UserService {
   static save(req, _, next) {
@@ -37,6 +39,26 @@ class UserService {
       req.authUser = user;
       return next();
     }).catch(next)
+  }
+  static rate(req, _, next) {
+  
+    const id = new Types.ObjectId(req.body.id);
+    const rating =req.body.rating;
+
+    User.updateOne({ _id:id}, { $inc: {rating: rating} }, function (
+      err,
+      result
+    ) {
+
+      if (err) {
+          next(err);
+      }
+      req.success = {
+        data: "sucess",
+        status: 200,
+      };
+      next();
+    });
   }
 }
 

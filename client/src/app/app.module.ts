@@ -1,3 +1,4 @@
+import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
 import { NavModule } from './components/nav/nav.module';
 import { CenterModule } from './components/center/center.module';
 import { AuthGuard } from './auth.guard';
@@ -12,6 +13,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { BrowseFarmersComponent} from './components/browse-farmers/browse-farmers.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,14 @@ import { BrowseFarmersComponent} from './components/browse-farmers/browse-farmer
     ContainerModule,
     CenterModule,
     DashboardModule,
-    NavModule
+    NavModule,
+    HttpClientModule
   ],
-  providers: [AuthenticationService, AuthGuard],
+  providers: [
+    AuthenticationService,
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
