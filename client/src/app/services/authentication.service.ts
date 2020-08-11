@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, Subject, from } from 'rxjs';
-import { flatMap } from 'rxjs/operators';
+import { flatMap, map } from 'rxjs/operators';
 import { Constants } from '../constants';
 
 @Injectable()
@@ -19,33 +19,39 @@ export class AuthenticationService {
     this.setupSignInSubject();
   }
 
-  private setupSignInSubject() {
+  setupSignInSubject() {
     return this.signinSubject$.asObservable().pipe(
       flatMap((user) =>
         from(this.http.post(Constants.SIGNIN_URL, JSON.stringify(user)))
-      )
+      ),
+      flatMap((response: {status: number, data: any}) => {
+        if(response.data) {
+          this.saveToken(response.data);
+        }
+        return of(response);
+      })
     );
   }
 
   reloadToken() {
-    from(this.isAuthenticated()).pipe(
+    return from(this.isAuthenticated()).pipe(
       flatMap(isAuth => {
         this.token = localStorage.getItem('authToken');
         this.authEvent.next(isAuth);
         return of(isAuth);
       })
-    ).subscribe();
+    );
   }
 
   saveToken(token) {
-    // save token when user is authenticated from the api
-    localStorage.setItem("authToken", JSON.stringify({token}));
+    this.token = JSON.stringify({token});
+    localStorage.setItem("authToken", this.token);
     this.reloadToken();
   }
 
   logout() {
     localStorage.removeItem("authToken");
-    this.reloadToken();
+    this.reloadToken().subscribe(result => console.log(result));
   }
 
   get tokenValue() {

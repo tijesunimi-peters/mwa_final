@@ -1,18 +1,19 @@
-import { flatMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
-  CanActivateChild,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
   Router,
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { flatMap } from 'rxjs/operators';
 
-@Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild {
+@Injectable({
+  providedIn: 'root',
+})
+export class GuestGuard implements CanActivate {
   constructor(
     private authService: AuthenticationService,
     private router: Router
@@ -21,26 +22,16 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   navigate(isAuth$: Observable<boolean>) {
     return isAuth$.pipe(
       flatMap((isAuth) => {
-        if (!isAuth) {
-          return this.router.navigate(['error']);
+        if (isAuth) {
+          return this.router.navigate(['home']);
         }
 
-        return of(isAuth);
+        return of(!isAuth);
       })
     );
   }
 
   canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    return this.navigate(this.authService.isAuthenticated());
-  }
-  canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):
