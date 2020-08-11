@@ -7,18 +7,18 @@
   <hr>
 
   <div class="uk-grid">
-    <div class="uk-width-3-10">
-      <div class="uk-panel uk-panel-box">
-        <h2 class="uk-panel-title">Welcome</h2>
+    <div class="uk-width-3-10 uk-block uk-block-secondary uk-contrast " >
+      <div class="uk-panel uk-panel-box uk-block-secondary uk-contrast">
+        <h1 class="uk-panel-title">Welcome</h1>
         <ul class="uk-nav uk-nav-side">
           <li>
-            <a uk-icon="icon: copy" [routerLink]="['profile']">Profile</a>
+            <a  [routerLink]="['profile']">Profile</a>
           </li>
           <li>
-            <a uk-icon="icon: plus" [routerLink]="['add-product']">Add Product</a>
+            <a  [routerLink]="['add-product']">Add Product</a>
           </li>
           <li>
-            <a uk-icon="icon: file-edit" [routerLink]="['add-product']">Order History</a>
+            <a [routerLink]="['add-product']">Order History</a>
           </li>
         </ul>
       </div>
@@ -43,7 +43,7 @@
           <tr *ngFor="let d of data">
 
             <td> {{d.customer.name}}</td>
-            
+
             <td *ngFor="let product of d.products">
               {{product.name}}
             </td>

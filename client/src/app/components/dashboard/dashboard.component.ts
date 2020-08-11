@@ -10,9 +10,8 @@ export class DashboardComponent implements OnInit {
   data: any[];
   headElements = ['CustomerName', 'Product', 'Quantity', 'Status'];
   constructor(private farmerdash: FarmerDashboardService) {
-    farmerdash.getOrdersForFarmers().subscribe(res => {
-      this.data = res.data
-      
+    farmerdash.getOrdersForFarmers().subscribe((res) => {
+      this.data = res.data;
     });
   }
 
