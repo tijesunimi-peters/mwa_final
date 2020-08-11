@@ -4,4 +4,6 @@ export class Constants {
   static SIGNUP_URL = `${Constants.API_BASE}/users`;
   static PRODUCTS_URL = `${Constants.API_BASE}/products`;
   static FARMERS_URL = `${Constants.API_BASE}/farmers`;
+  static ORDERS_URL = `${Constants.API_BASE}/orders`;
+  static FARMERS_ORDERS_URL = `${Constants.ORDERS_URL}/farmers`;
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Constants } from '../constants';
 
 @Injectable({
   providedIn: 'root',
@@ -7,9 +8,7 @@ import { Injectable } from '@angular/core';
 export class FarmerDashboardService {
   constructor(private http: HttpClient) {}
 
-  getOrdersForFarmers(): any {
-    return this.http.get(
-      'http://localhost:3201/api/v1/orders/farmers/5f3027e6096326007f7fdb11'
-    );
+  getOrdersForFarmers(id:string): any {
+    return this.http.get(Constants.FARMERS_ORDERS_URL+`/${id}`)
   }
 }
