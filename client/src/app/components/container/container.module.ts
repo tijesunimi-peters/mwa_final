@@ -10,7 +10,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomersComponent } from '../customers/customers.component';
 import { ProductsComponent } from '../products/products.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     ContainerComponent,
@@ -20,8 +20,8 @@ import { ProductsComponent } from '../products/products.component';
     ProductsComponent,
   ],
   providers: [ProductsService],
-  imports: [CommonModule, ContainerRoutingModule, CenterModule, NavModule],
-  exports: [ContainerComponent],
+  imports: [CommonModule, ContainerRoutingModule, CenterModule, NavModule,ReactiveFormsModule],
+  exports: [ContainerComponent,ReactiveFormsModule],
   bootstrap: [ContainerComponent],
 })
 export class ContainerModule {}
