@@ -1,5 +1,6 @@
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +10,24 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent {
   title = 'FarmArt';
   private isAuthenticated = false;
+  private tokenSubscription: Subscription;
+  private authEventSubscription: Subscription;
 
   constructor(private authService: AuthenticationService) {
-    this.authService.event.subscribe(this.updateAuthState);
   }
   
   ngOnInit() {
-    this.authService.reloadToken();
+    this.tokenSubscription = this.authService.reloadToken().subscribe(this.updateAuthState);
+    this.authEventSubscription = this.authService.event.subscribe(this.updateAuthState);
   }
 
   updateAuthState = (val) => {
-    console.log("in updateAuthState ")
+    console.log("Authenticated: ", val);
     this.isAuthenticated = val;
+  }
+
+  ngOnDestroy() {
+    this.tokenSubscription.unsubscribe();
+    this.authEventSubscription.unsubscribe();
   }
 }

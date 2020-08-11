@@ -2,26 +2,58 @@
   <div class="uk-block uk-block-secondary uk-contrast uk-block-large">
     <div class="uk-container">
       <h1>FarmArt</h1>
-      <hr>
+      <hr />
       <h2>Sign In</h2>
+      <ul *ngIf="errors.length > 0">
+        <li *ngFor="let error of errors" >
+          <small class="uk-form-danger farmart-error-display">{{error}}</small>
+        </li>
+      </ul>
       <div class="uk-grid uk-grid-match" data-uk-grid-margin="">
-        <form action="#" class="uk-form">
+        <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" class="uk-form">
           <div class="uk-row uk-margin-bottom">
             <div class="uk-width-medium-1-3">
               <div class="uk-panel">
-                <input type="email" class="uk-form-large uk-form-width-large uk-contrast" placeholder="Email" />
+                <input
+                  type="email"
+                  name="email"
+                  [formControl]="signinForm.get('email')"
+                  class="uk-form-large uk-form-width-large uk-contrast"
+                  placeholder="Email"
+                />
+                <small
+                  class="uk-form-danger farmart-error-display"
+                  *ngIf="!signinForm.get('email').valid"
+                  >Pls provide a valid email</small
+                >
               </div>
             </div>
           </div>
           <div class="uk-row uk-margin-bottom">
             <div class="uk-width-medium-1-3">
               <div class="uk-panel">
-                <input type="password" class="uk-form-large uk-form-width-large uk-contrast" placeholder="Password" />
+                <input
+                  type="password"
+                  class="uk-form-large uk-form-width-large uk-contrast"
+                  placeholder="Password"
+                  name="password"
+                  [formControl]="signinForm.get('password')"
+                />
+                <small
+                  class="uk-form-danger farmart-error-display"
+                  *ngIf="!signinForm.get('password').valid"
+                  >Pls provide password</small
+                >
               </div>
             </div>
           </div>
           <div class="uk-row">
-            <button class="uk-button uk-button-large uk-button-primary">Submit</button>
+            <button
+              [disabled]="!signinForm.valid"
+              class="uk-button uk-button-large uk-button-primary"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </div>

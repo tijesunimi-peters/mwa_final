@@ -6,8 +6,9 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
-import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { RegistrationService } from './../../services/registration.service';
+import { Subscription } from "rxjs"
 
 @Component({
   selector: 'app-signup',
@@ -18,12 +19,14 @@ import { RegistrationService } from './../../services/registration.service';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   role = 'customer';
+  registerServiceSub: Subscription;
 
   constructor(
     private registrationService: RegistrationService,
     private foundBuilder: FormBuilder,
     private router: ActivatedRoute
   ) {
+    this.registerServiceSub = registrationService.setupRegistrationPipeline().subscribe(this.registerResponse);
     router.queryParams.subscribe((x) => (x.type ? (this.role = x.type) : null));
   }
 
@@ -49,18 +52,15 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(this.signupForm.value.username);
-    const newUser = {
-      username: this.signupForm.value.username,
-      email: this.signupForm.value.email,
-      password: this.signupForm.value.password,
-      city: this.signupForm.value.city,
-      zipcode: this.signupForm.value.zipcode,
-      state: this.signupForm.value.state,
-      role: this.signupForm.value.role,
-    };
+  registerResponse = (result) => {
+    console.log(result);
+  }
 
-    this.registrationService.registrationSubject.next(newUser);
+  onSubmit() {
+    this.registrationService.registrationSubject.next(this.signupForm.value);
+  }
+
+  ngOnDestroy() {
+    this.registerServiceSub.unsubscribe();
   }
 }
