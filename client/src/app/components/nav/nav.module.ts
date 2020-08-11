@@ -1,3 +1,4 @@
+import { AuthLinkDirective } from './../../directives/auth-link.directive';
 import { RouterModule } from '@angular/router';
 import { CenterModule } from './../center/center.module';
 import { NavComponent } from './nav.component';
@@ -7,7 +8,7 @@ import { CommonModule } from '@angular/common';
 
 
 @NgModule({
-  declarations: [NavComponent],
+  declarations: [NavComponent, AuthLinkDirective],
   imports: [
     CommonModule,
     RouterModule,

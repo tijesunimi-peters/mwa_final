@@ -1,3 +1,4 @@
+import { GuestGuard } from './../../guards/guest.guard';
 import { SignupComponent } from './../signup/signup.component';
 import { SigninComponent } from './../signin/signin.component';
 import { AuthGuard } from './../../auth.guard';
@@ -15,8 +16,8 @@ const routes: Routes = [
     component: ContainerComponent,
     children: [
       { path: 'home', component: HomeComponent },
-      { path: 'signin', component: SigninComponent },
-      { path: 'signup', component: SignupComponent },
+      { path: 'signin', component: SigninComponent, canActivate: [GuestGuard] },
+      { path: 'signup', component: SignupComponent, canActivate: [GuestGuard] },
       {
         path: 'customers',
         component: CustomersComponent,
