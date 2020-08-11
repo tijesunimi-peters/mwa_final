@@ -1,3 +1,4 @@
+import { FarmerServicesService } from './../../services/farmer-services.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FarmersComponent implements OnInit {
 
-  constructor() { }
+  public farmers = [];
+
+  constructor(private _farmerServicce: FarmerServicesService) { }
 
   ngOnInit(): void {
+    this._farmerServicce.showFarmers().subscribe(response => {
+          this.farmers = response.data;
+    })
   }
 
 }

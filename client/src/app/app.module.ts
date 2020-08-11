@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { ErrorComponent } from './components/error/error.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { BrowseFarmersComponent} from './components/browse-farmers/browse-farmers.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -21,8 +20,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     ErrorComponent,
     SigninComponent,
     SignupComponent,
-    BrowseFarmersComponent
-    
   ],
   imports: [
     BrowserModule,

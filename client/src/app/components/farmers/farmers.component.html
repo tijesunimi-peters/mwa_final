@@ -1,44 +1,10 @@
 
-<!-- <h3>Browse Farmers</h3> -->
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<div>
+    <ul class="uk-list">
+        <li> <strong>Farmer Lists</strong> </li>
+        <li *ngFor="let farmer of farmers">
+            {{ farmer.username }}
+        </li>
+    </ul>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
-  </head>
-  
-  <body>
-    <h1>Browser farmers product!</h1>
-    <form>
-     <div>
-         <div>
-             <label>Id:</label>
-             <input type="text" placeholder="id">
-         </div>
-         <div>
-            <label>name:</label>
-            <input type="text" placeholder="name">
-        </div>
-        <div>
-            <label>Email:</label>
-            <input type="text" placeholder="Email">
-        </div>
-         <!-- <ul>
-             <li>id </li>
-             <li>Name </li>
-             <li>Email </li>
-         </ul> -->
-     </div>
-     <button>Search</button>
-    </form>
-    <label>Result</label>
-    <input class="result" type="text" width="400px" height="400px">
-    
-  </body>
-</html>
+</div>

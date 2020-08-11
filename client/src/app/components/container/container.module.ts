@@ -1,3 +1,4 @@
+import { FarmerServicesService } from './../../services/farmer-services.service';
 import { NavModule } from './../nav/nav.module';
 import { FarmersComponent } from './../farmers/farmers.component';
 import { CenterModule } from './../center/center.module';
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { CustomersComponent } from '../customers/customers.component';
 import { ProductsComponent } from '../products/products.component';
 
+
 @NgModule({
   declarations: [
     ContainerComponent,
@@ -19,6 +21,9 @@ import { ProductsComponent } from '../products/products.component';
     ProductsComponent,
   ],
   imports: [CommonModule, ContainerRoutingModule, CenterModule, NavModule],
+
+  providers : [FarmerServicesService],
+  
   exports: [ContainerComponent],
   bootstrap: [ContainerComponent],
 })
