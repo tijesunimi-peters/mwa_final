@@ -1,3 +1,4 @@
+import { ProductsService } from '../../services/products.service';
 import { NavModule } from './../nav/nav.module';
 import { FarmersComponent } from './../farmers/farmers.component';
 import { CenterModule } from './../center/center.module';
@@ -28,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [ProductsService],
   exports: [ContainerComponent, ReactiveFormsModule],
   bootstrap: [ContainerComponent],
 })
