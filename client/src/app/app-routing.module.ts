@@ -25,7 +25,9 @@ const routes: Routes = [
         (x) => x.DashboardModule
       ),
   },
-  { path: '**',  component: NotFoundComponent },
+  { path: '404',  component: NotFoundComponent },
+  // Don't remove needs a fix
+  // { path: '**',  component: NotFoundComponent },
 ];
 
 @NgModule({
