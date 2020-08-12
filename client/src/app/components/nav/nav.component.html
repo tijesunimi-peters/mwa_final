@@ -11,19 +11,22 @@
           <a routerLink="/app/home">Home</a>
         </li>
         <li>
-          <a routerLink="/dashboard">Dashboard</a>
+          <a authLink [authLinkValue]="isAuthenticated" routerLink="/dashboard">Dashboard</a>
         </li>
         <li>
-          <a routerLink="/signin">Sign In</a>
+          <a authLink [authLinkValue]="!isAuthenticated" routerLink="/signin">Sign In</a>
         </li>
         <li>
-          <a routerLink="/signup">Sign Up</a>
+          <a authLink [authLinkValue]="!isAuthenticated" routerLink="/signup">Sign Up</a>
         </li>
         <li>
-          <a routerLink="/app/customers/products">Products</a>
+          <a authLink [authLinkValue]="isAuthenticated" routerLink="/app/customers/products">Products</a>
         </li>
         <li>
-          <a routerLink="/app/customers/farmers">Browse</a>
+          <a authLink [authLinkValue]="isAuthenticated" routerLink="/app/customers/farmers">Browse</a>
+        </li>
+        <li>
+          <a authLink [authLinkValue]="isAuthenticated" (click)="logoutEvent($event)" href="#">Logout</a>
         </li>
       </ul>
       <a

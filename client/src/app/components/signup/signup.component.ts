@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  NgForm,
   FormGroup,
   FormBuilder,
   Validators,
   FormControl,
 } from '@angular/forms';
-import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegistrationService } from './../../services/registration.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -18,13 +18,19 @@ import { RegistrationService } from './../../services/registration.service';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   role = 'customer';
+  registerServiceSub: Subscription;
+  errors: string[] = [];
 
   constructor(
     private registrationService: RegistrationService,
     private foundBuilder: FormBuilder,
-    private router: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
-    router.queryParams.subscribe((x) => (x.type ? (this.role = x.type) : null));
+    this.registerServiceSub = registrationService
+      .setupRegistrationPipeline()
+      .subscribe(this.registerResponse);
+    route.queryParams.subscribe((x) => (x.type ? (this.role = x.type) : null));
   }
 
   ngOnInit(): void {
@@ -33,8 +39,14 @@ export class SignupComponent implements OnInit {
 
   initializeForm(): void {
     this.signupForm = this.foundBuilder.group({
-      username: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.email, Validators.required]),
+      username: new FormControl('', {
+        validators: [Validators.required],
+        updateOn: 'blur',
+      }),
+      email: new FormControl('', {
+        validators: [Validators.email, Validators.required],
+        updateOn: 'blur',
+      }),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
@@ -49,18 +61,15 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(this.signupForm.value.username);
-    const newUser = {
-      username: this.signupForm.value.username,
-      email: this.signupForm.value.email,
-      password: this.signupForm.value.password,
-      city: this.signupForm.value.city,
-      zipcode: this.signupForm.value.zipcode,
-      state: this.signupForm.value.state,
-      role: this.signupForm.value.role,
-    };
+  registerResponse = (result) => {
+    this.router.navigate(['email-notification']);
+  };
 
-    this.registrationService.registrationSubject.next(newUser);
+  onSubmit() {
+    this.registrationService.registrationSubject.next(this.signupForm.value);
+  }
+
+  ngOnDestroy() {
+    this.registerServiceSub.unsubscribe();
   }
 }

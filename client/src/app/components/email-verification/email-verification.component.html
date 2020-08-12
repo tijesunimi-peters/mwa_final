@@ -1,0 +1,22 @@
+<app-center>
+  <div class="uk-block uk-block-secondary uk-contrast uk-block-large">
+    <div class="uk-container">
+      <h1>FarmArt</h1>
+      <hr>
+      <h2>Email Verification</h2>
+      
+      <p *ngIf="errors.length === 0">
+        Please wait while we verify your email
+      </p>
+
+      <ul *ngIf="errors.length > 0">
+        <li *ngFor="let error of errors">
+          <small class="uk-form-danger farmart-error-display">{{
+            error
+          }}</small>
+        </li>
+      </ul>
+      <a *ngIf="errors.length > 0" class="uk-button uk-button-large" routerLink="/home">Home</a>
+    </div>
+  </div>
+</app-center>

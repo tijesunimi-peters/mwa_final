@@ -15,6 +15,10 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationService } from './services/registration.service';
+import { EmailNotificationComponent } from './components/email-notification/email-notification.component';
+import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 
@@ -24,6 +28,10 @@ import { RegistrationService } from './services/registration.service';
     ErrorComponent,
     SigninComponent,
     SignupComponent,
+    EmailNotificationComponent,
+    EmailVerificationComponent,
+    NotFoundComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

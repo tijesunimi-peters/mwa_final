@@ -1,2 +1,10 @@
 
-<h3>Browse Farmers</h3>
+<div>
+    <ul class="uk-list uk-list-line">
+        <li> <strong>Farmer Lists</strong> </li>
+        <li  class=".uk-list-space" *ngFor="let farmer of farmers">
+            {{ farmer.username }}
+        </li>
+    </ul>
+
+</div>

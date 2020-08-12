@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return isAuth$.pipe(
       flatMap((isAuth) => {
         if (!isAuth) {
-          return this.router.navigate(['error']);
+          return this.router.navigate(['signin']);
         }
 
         return of(isAuth);
@@ -38,8 +38,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // return this.navigate(this.authService.isAuthenticated());
-    return true;
+    return this.navigate(this.authService.isAuthenticated());
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,
@@ -49,7 +48,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // return this.navigate(this.authService.isAuthenticated());
-    return true;
+    return this.navigate(this.authService.isAuthenticated());
   }
 }
