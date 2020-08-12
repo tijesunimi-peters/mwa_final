@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OrderService } from 'src/app/services/Order.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -8,45 +9,46 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  data: any[];
-  customer_data : any[];
-  values: any;
+  orders: any[];
+  userId: string;
 
-  headElements = ['CustomerName', 'Product', 'Quantity', 'Status'];
-  customElements = ['Product', 'Quantity', 'Status'];
+  farmerColumns = ['Customer Name', 'Product', 'Status', "Date"];
+  customerColumns = ['Product', 'Quantity', 'Status', 'Date'];
+
+  headerTitles = [];
 
   constructor(
     private farmerdash: OrderService,
-    private authencationService: AuthenticationService
+    private authencationService: AuthenticationService,
+    private router: Router
   ) {
-    this.values = JSON.parse(authencationService.myStorage.getItem("user"));
-
-    farmerdash
-      .getOrdersForFarmers('5f3024e6e328ca003951438f')
-      .subscribe((res) => {
-        this.data = res.data;
-        console.log(this.data);
-      });
-
-    farmerdash
-    .getOrdersForCustomers('5f304230baa3be0af31cc8aa')
-    .subscribe((res)=>{
-      this.customer_data = res.data;
-      console.log(this.data);
-    });
-
+    this.userId = authencationService.user._id;
   }
 
   checkUser() {
-    if (this.values.role == 'customer') return true;
-    else {
-      return false;
+    return this.authencationService.role == 'customer';
+  }
+
+  getOrders() {
+    if (this.checkUser()) {
+      this.farmerdash.getOrdersForCustomers(this.userId).subscribe((res) => {
+        this.orders = res.data;
+      });
+    } else {
+      this.farmerdash.getOrdersForFarmers(this.userId).subscribe((res) => {
+        this.orders = res.data;
+      });
     }
   }
 
   ngOnInit(): void {
-
-    console.log(this.customer_data)
-    console.log(this.data)
+    if (!this.userId) {
+      this.router.navigate(['signin']);
+    } else {
+      this.headerTitles = this.checkUser()
+        ? this.customerColumns
+        : this.farmerColumns;
+      this.getOrders();
+    }
   }
 }

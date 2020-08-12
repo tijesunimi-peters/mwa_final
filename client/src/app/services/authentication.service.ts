@@ -20,6 +20,7 @@ export class AuthenticationService {
   }
 
   constructor(private http: HttpClient) {
+    this.token = localStorage.getItem("token");
     this.reloadToken();
     this.setupSignInSubject();
   }
@@ -61,11 +62,19 @@ export class AuthenticationService {
   }
 
   get tokenValue() {
-    return this.token;
+    return this.token ? JSON.parse(this.token).token : null;
   }
 
   get event() {
     return this.authEvent;
+  }
+
+  get user() {
+    return JSON.parse(localStorage.getItem("user")) || {};
+  }
+
+  get role() {
+    return (JSON.parse(localStorage.getItem("user")) || {}).role;
   }
 
   isAuthenticated() {

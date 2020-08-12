@@ -30,6 +30,7 @@ export class SigninComponent implements OnInit {
   }
 
   signinError = (response) => {
+    console.log(response);
     this.errors = response.error.errors;
   };
 
@@ -48,6 +49,7 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.signinForm.value)
     this.authService.signinSubject.next(this.signinForm.value);
   }
 

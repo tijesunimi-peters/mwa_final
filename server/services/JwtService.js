@@ -33,16 +33,16 @@ class JwtService {
   static verifyToken(req, _, next) {
     const { token } = req.body;
 
-    jwt.verify(result, process.env.JWT_SECRET, function (err, decoded) {
-      if (err) {
-        return next({
-          message: { message: err.message, reason: "Invalid token" },
-          status: 400
-        });
-      }
-      req.verifyUser = decoded;
+    try {
+      const result = jwt.verify(token, process.env.JWT_SECRET);
+      req.verifyUser = result;
       next();
-    });
+    } catch (e) {
+      return next({
+        message: { message: err.message, reason: "Invalid token" },
+        status: 400
+      });
+    }
   }
 }
 
