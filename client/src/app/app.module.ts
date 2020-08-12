@@ -19,6 +19,8 @@ import { EmailNotificationComponent } from './components/email-notification/emai
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+// import { PaymentsComponent } from './components/payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     EmailVerificationComponent,
     NotFoundComponent,
     OrdersComponent,
+    // PaymentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     NavModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NoopAnimationsModule,
   ],
   providers: [
     AuthenticationService,

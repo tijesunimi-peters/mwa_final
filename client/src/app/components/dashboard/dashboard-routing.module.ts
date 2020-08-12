@@ -1,5 +1,6 @@
 import { OrdersComponent } from './../orders/orders.component';
 import { ProductFormComponent } from './../product-form/product-form.component';
+import { PaymentComponent } from './../payments/payments.component';
 import { AuthGuard } from '../../auth.guard';
 
 import { ProfileComponent } from './../profile/profile.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'add-product',
         component: ProductFormComponent,
+      },
+      {
+        path: 'add-pay',
+        component: PaymentComponent,
       },
     ],
   },
