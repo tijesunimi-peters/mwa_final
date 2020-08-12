@@ -6,9 +6,10 @@ class AuthService {
       if(err) return next(err);
 
       if (valid) {
+        const { password, ...details } = req.authUser.toObject();
         req.passForToken = {
           valid: true,
-          user: { _id: req.authUser._id, email: req.authUser.email }
+          user: { ...details }
         }
         return next();
       }
@@ -19,6 +20,36 @@ class AuthService {
   }
 
   static isAuthenticated(req, _, next) {
+    next();
+  }
+
+  static isSuperAdmin(req, _, next) {
+    if(!req.loggedInUser || req.loggedInUser.role !== "superuser") {
+      return next({
+        status: 400,
+        message: "Only for SuperAdmin"
+      })
+    }
+    next();
+  }
+
+  static isCustomer(req, _, next) {
+    if(!req.loggedInUser || req.loggedInUser.role !== "customer") {
+      return next({
+        status: 400,
+        message: "Only for Customers"
+      })
+    }
+    next();
+  }
+
+  static isFarmer(req, _, next) {
+    if(!req.loggedInUser || req.loggedInUser.role !== "farmer") {
+      return next({
+        status: 400,
+        message: "Only for Farmers"
+      })
+    }
     next();
   }
 

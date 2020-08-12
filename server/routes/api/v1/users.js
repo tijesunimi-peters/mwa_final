@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
 
-const { UserService, JwtService,EmailService } = require("../../../services");
-const { route } = require("./order");
+const { UserService, JwtService,EmailService, AuthService } = require("../../../services");
 
 router.post("/users", UserService.save, JwtService.generateToken, EmailService.sendMail);
-router.get("/users", UserService.all);
+
+router.get("/users", JwtService.checkToken, AuthService.isSuperAdmin, UserService.all);
 module.exports = router;

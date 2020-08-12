@@ -6,6 +6,34 @@ var {
 const {Order} = require("../models");
 
 class OrderService {
+    static setFilters(req, _, next) {
+        const filters = {};
+        if(req.query.filterByDate) {
+            const startTime = new Date(req.query.filterByDate);
+            let endTime = new Date(req.query.filterByDate);
+            endTime.setDate(endTime.getDate() - 1);
+            filters['created_at'] = { $lte: startTime.toISOString(), $gte: endTime.toISOString() }
+        }
+
+        if(req.query.filterByStatus) {
+            filters['status'] = req.query.filterByStatus
+        }
+
+        req.orderFilter = filters;
+
+        next();
+    }
+
+    static all(req, _, next) {
+        Order.find(req.orderFilter).limit(10).then(orders => {
+            req.success = {
+                status: 200,
+                data: orders
+            }
+            next();
+        }).catch(next)
+    }
+
     static createOrder(req, _, next) {
         let newOrder = new Order(req.body);
         newOrder.save(function (err, order) {
@@ -42,7 +70,8 @@ class OrderService {
 
     static getOrders(req, _, next) {
         var query = {
-            "customer._id": req.params.customerId
+            "customer._id": req.params.customerId,
+            ...(req.orderFilter || {})
         };
         Order.find(query, function (err, found) {
             if (err) 
@@ -60,6 +89,7 @@ class OrderService {
     static getOrderforFarmers(req, _, next) {
 
         var query = {
+            ...(req.orderFilter || {}),
             products: {
                 $elemMatch: {
                     "farmer._id": new Types.ObjectId(req.params.farmerId)
