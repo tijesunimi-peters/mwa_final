@@ -6,6 +6,7 @@ const { ProductService, ImageService, JwtService, AuthService } = require("../..
 router.use("/products", JwtService.checkToken)
 router.post("/products", AuthService.isFarmer, ImageService.upload.single("image"), ProductService.save);
 router.get("/products", ProductService.all);
-router.get("/products/:farmer_id", ProductService.findProductByFarmer);
+router.get("/products/all/:farmer_id", ProductService.findProductByFarmer);
 router.delete("/products/:product_id", ProductService.removeProduct);
+router.get("/products/:product_id", ProductService.findone);
 module.exports = router;

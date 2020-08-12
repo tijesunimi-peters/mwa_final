@@ -31,6 +31,7 @@ class UserService {
   }
 
   static findUser(req, _, next) {
+    console.log(req.body);
     User.findOne({ email: req.body.email })
       .then(function (user) {
         if (!user) return next({ message: "User is not in our records" });

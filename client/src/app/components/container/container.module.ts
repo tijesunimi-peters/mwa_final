@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 import { CustomersComponent } from '../customers/customers.component';
 import { ProductsComponent } from '../products/products.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 import { UsernameValidatorDirective } from '../../validators/username-validator.directive';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { UsernameValidatorDirective } from '../../validators/username-validator.
     UsernameValidatorDirective
   ],
   imports: [
-    HttpClientModule,
+    // HttpClientModule,
     CommonModule,
     ContainerRoutingModule,
     CenterModule,

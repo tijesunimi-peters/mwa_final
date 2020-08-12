@@ -20,6 +20,8 @@ import { EmailVerificationComponent } from './components/email-verification/emai
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OrdersComponent } from './components/orders/orders.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     DashboardModule,
     NavModule,
     HttpClientModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthenticationService,

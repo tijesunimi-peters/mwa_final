@@ -1,0 +1,62 @@
+<h2>
+  Products
+</h2>
+<small>
+  <a routerLink="/dashboard/add-product" class="uk-link uk-button-link uk-text-bold">Add Product</a>
+</small>
+
+
+<hr>
+<div *ngIf="data.length === 0; else show_table">
+  <h3>No products yet</h3>
+</div>
+
+<ng-template #show_table>
+  <table class="uk-table uk-table-hover uk-table-striped">
+    <thead>
+      <tr>
+        <th class="uk-width-1-4">Image</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td>Name</td>
+        <td>Category</td>
+        <td>Price</td>
+        <td></td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr *ngFor="let product of data; let id = index">
+        <td>
+          <img [src]="product.image" width="50" alt="product-image" />
+        </td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.price | currency }}</td>
+        <td>
+          <button
+            class="uk-button uk-button-danger"
+            type="button"
+            (click)="deleteProduct($event, product._id)"
+          >
+            Delete
+          </button>
+          <button
+            class="uk-button uk-button-success"
+            type="button"
+            (click)="updateProduct($event, product._id)"
+          >
+            Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>
+
