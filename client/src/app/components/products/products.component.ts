@@ -16,15 +16,8 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  
-    addToCart(product){
-      this.viewProductService.addProduct(product);
-    }
-    
-  }
-      // this.values += event.target.attri
-      // console.log(this.values.name);
-      
-    //  this.viewProductService.addProduct();
-    
 
+  addToCart(product) {
+    this.viewProductService.addProduct(product);
+  }
+}

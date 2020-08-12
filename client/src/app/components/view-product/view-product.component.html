@@ -47,13 +47,12 @@
           >
             Delete
           </button>
-          <button
+          <a
             class="uk-button uk-button-success"
-            type="button"
-            (click)="updateProduct($event, product._id)"
+            routerLink="/dashboard/update-product/{{product._id}}"
           >
             Edit
-          </button>
+        </a>
         </td>
       </tr>
     </tbody>

@@ -49,13 +49,17 @@ export class ProductsService {
     formdata.append('category', product.category);
     formdata.append('description', product.description);
     formdata.append('farmer[_id]', product.farmer._id);
-    formdata.append('farmer[name]', product.farmer.name);
+    formdata.append('farmer[name]', product.farmer.username);
     formdata.append('farmer[email]', product.farmer.email);
     if(product.image) {
       formdata.append('image', product.image);
     }
     formdata.append('price', product.price);
 
-    return this.http.post(Constants.PRODUCTS_URL, formdata);
+    return this.http.post(Constants.PRODUCTS_URL, formdata, {
+      headers: {
+        "Content-Type": "none"
+      }
+    });
   }
 }
