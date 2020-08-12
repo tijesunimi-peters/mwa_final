@@ -1,0 +1,7 @@
+<div *ngIf="errors.length > 0" class="uk-block">
+  <ul>
+    <li *ngFor="let error of errors" >
+      <small class="uk-form-danger farmart-error-display">{{error}}</small>
+    </li>
+  </ul>
+</div>

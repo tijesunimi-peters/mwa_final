@@ -27,6 +27,10 @@ export class AuthTokenInterceptor implements HttpInterceptor {
       modifiedRequest = modifiedRequest.clone({
         headers: modifiedRequest.headers.set("Content-Type", "application/json")
       })
+    } else if(modifiedRequest.headers.get("Content-Type") === "none") {
+      modifiedRequest = modifiedRequest.clone({
+        headers: modifiedRequest.headers.delete("Content-Type", "none")
+      })
     }
 
     return next.handle(modifiedRequest);

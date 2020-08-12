@@ -8,11 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FarmersComponent implements OnInit {
   public farmers = [];
+  errors = [];
 
   constructor(private _farmerServicce: FarmersService) {}
 
   ngOnInit(): void {
     this._farmerServicce.showFarmers().subscribe((response) => {
+      this.farmers = response.data;
+    });
+  }
+
+  sort(order) {
+    this._farmerServicce.showFarmers(order).subscribe((response) => {
       this.farmers = response.data;
     });
   }

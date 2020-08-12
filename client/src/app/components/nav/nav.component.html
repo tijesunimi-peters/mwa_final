@@ -20,10 +20,10 @@
           <a authLink [authLinkValue]="!isAuthenticated" routerLink="/signup">Sign Up</a>
         </li>
         <li>
-          <a authLink [authLinkValue]="isAuthenticated" routerLink="/app/customers/products">Products</a>
+          <a authLink [authLinkValue]="isAuthenticated" routerLink="/app/customers/farmers">Browse</a>
         </li>
         <li>
-          <a authLink [authLinkValue]="isAuthenticated" routerLink="/app/customers/farmers">Browse</a>
+            <cart [isAuthenticated]="isAuthenticated"></cart>
         </li>
         <li>
           <a authLink [authLinkValue]="isAuthenticated" (click)="logoutEvent($event)" href="#">Logout</a>

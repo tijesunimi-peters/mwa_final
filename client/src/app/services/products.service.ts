@@ -1,12 +1,25 @@
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Constants } from '../constants';
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
+  myStorage = window.localStorage;
+  products = [];
+  // data: any;
+  getproducts(): any {
+    return this.http.get(Constants.PRODUCTS_URL);
+  }
+
+  addProduct(product) {
+    
+    this.products.push(product);
+
+    this.myStorage.setItem('products', JSON.stringify(this.products));
+  }
   data: any;
 
   constructor(
@@ -36,13 +49,17 @@ export class ProductsService {
     formdata.append('category', product.category);
     formdata.append('description', product.description);
     formdata.append('farmer[_id]', product.farmer._id);
-    formdata.append('farmer[name]', product.farmer.name);
+    formdata.append('farmer[name]', product.farmer.username);
     formdata.append('farmer[email]', product.farmer.email);
     if(product.image) {
       formdata.append('image', product.image);
     }
     formdata.append('price', product.price);
 
-    return this.http.post(Constants.PRODUCTS_URL, formdata);
+    return this.http.post(Constants.PRODUCTS_URL, formdata, {
+      headers: {
+        "Content-Type": "none"
+      }
+    });
   }
 }
