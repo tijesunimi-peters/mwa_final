@@ -6,9 +6,9 @@
       <div class="uk-panel uk-panel-box uk-height-viewport uk-block-secondary uk-contrast">
         <h1 class="uk-panel-title">Welcome</h1>
         <ul class="uk-nav uk-nav-side">
-          <li>
+          <!-- <li>
             <a [routerLink]="['profile']">Profile</a>
-          </li>
+          </li> -->
           <li *ngIf="authService.role === 'farmer'">
             <a [routerLink]="['view-product']">Products</a>
           </li>
