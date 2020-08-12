@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ViewprofileService } from '../../services/viewprofile.service'
 import { from } from 'rxjs';
 
@@ -8,15 +8,19 @@ import { from } from 'rxjs';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+ 
   public profile = [];
+
 
   constructor(private view: ViewprofileService) { }
 
   ngOnInit(): void {
      this.view.viewProfile().subscribe((response)=>{
             this.profile = response.data;
+            console.log(this.profile)
          })
   }
+
+ 
   
 }

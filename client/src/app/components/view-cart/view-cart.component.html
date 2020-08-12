@@ -1,0 +1,51 @@
+
+ <!-- <input  type="text"  [(value)]="carts[0].id"><br> 
+ <input  type="text"  [(value)]="carts[1].name"><br>
+ <input  type="text"  [(value)]="carts[2].quantity"><br>
+ <input  type="text"  [(value)]="carts[3].price"><br> -->
+
+<table class="app-view-cart">
+  <caption>
+    <strong>Cart View</strong></caption>
+  <thead>
+      <tr>
+          <th>
+            <!-- Display  -->
+          </th>
+      </tr>
+  </thead>
+  <tfoot>
+      <tr>
+        <button>View</button>
+        <button>Delete</button>
+        <button>change</button>
+      </tr>
+  </tfoot>
+  <tbody>
+      <tr class="uk-table uk-table-hover">
+        <td>ID</td>
+        <td>Name</td>
+        <td>Quantity</td>
+        <td>price</td>
+      </tr>
+      <tr>
+        <td>{{carts[0].id}}</td>
+        <td>{{carts[1].name}}</td>
+        <td>{{carts[2].quantity}}</td>
+        <td>{{carts[3].price}}</td>
+      </tr>
+
+  </tbody> 
+  <!-- <h4>Total {{carts[2].quantity}} * {{carts[3].price}} </h4>  -->
+ 
+<!-- </table>
+<div>
+  <p>{{carts}}</p>
+   <input class="uk-form-width-medium" type="text" formControlName="street" [(value)]="carts.id"><br> 
+</div>
+<div class="panel-footer">
+   <h4>Total {{carts.quantity}} * {{carts.price}} </h4> 
+ </div>-->
+
+
+

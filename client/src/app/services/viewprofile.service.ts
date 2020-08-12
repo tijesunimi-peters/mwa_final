@@ -14,4 +14,6 @@ export class ViewprofileService {
    return this.http.get<any>(this._profileUrl)
   }
 
+ 
+
 }
