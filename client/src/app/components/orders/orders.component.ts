@@ -25,12 +25,14 @@ export class OrdersComponent implements OnInit {
       .getOrdersForFarmers('5f3024e6e328ca003951438f')
       .subscribe((res) => {
         this.data = res.data;
+        console.log(this.data);
       });
 
     farmerdash
-    .getOrdersForCustomers('5f3028c28d136c0a018cf0de')
+    .getOrdersForCustomers('5f304230baa3be0af31cc8aa')
     .subscribe((res)=>{
       this.customer_data = res.data;
+      console.log(this.data);
     });
 
   }
@@ -42,5 +44,9 @@ export class OrdersComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    console.log(this.customer_data)
+    console.log(this.data)
+  }
 }

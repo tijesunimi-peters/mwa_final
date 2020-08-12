@@ -14,19 +14,21 @@
     <tr *ngFor="let c of customer_data">
 
         <td *ngFor="let product of c.products">
-            {{product.name}}
+            {{product}}
         </td>
 
         <td> {{c.quantity}}</td>
 
-        <!-- <div class="uk-margin">
+        <td> {{c.status}}</td> -->
+<!-- 
+        <div class="uk-margin">
             <select class="uk-select">
                 <option>Pending</option>
                 <option>Ready</option>
                 <option>Complete</option>
-            </select>
+            </select> -->
 
-        </div> -->
+        <!-- </div> -->
     </tr>
 </tbody>
 
@@ -70,4 +72,4 @@
         </tr>
     </tbody>
 </table>
-</ng-template>
+</ng-template> -->
