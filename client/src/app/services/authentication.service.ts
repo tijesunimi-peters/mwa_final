@@ -9,9 +9,14 @@ export class AuthenticationService {
   private token: string;
   private signinSubject$ = new Subject();
   private authEvent = new EventEmitter();
+   myStorage = window.localStorage;
 
   get signinSubject() {
     return this.signinSubject$;
+  }
+
+  get localStorage(){
+    return this.myStorage;
   }
 
   constructor(private http: HttpClient) {
@@ -26,7 +31,8 @@ export class AuthenticationService {
       ),
       flatMap((response: {status: number, data: any}) => {
         if(response.data) {
-          this.saveToken(response.data);
+          this.saveToken(response.data.token);
+          this.myStorage.setItem('user', JSON.stringify(response.data.user));
         }
         return of(response);
       })

@@ -19,4 +19,8 @@ export class OrderService {
   getOrdersForFarmers(id: string): any {
     return this.http.get(Constants.FARMERS_ORDERS_URL + `/${id}`);
   }
+
+  getOrdersForCustomers(id:string): any{
+    return this.http.get(Constants.ORDERS_URL + `/${id}`);
+  }
 }
