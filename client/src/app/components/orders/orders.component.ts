@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  orders: any[];
+  orders: any[] = [];
   userId: string;
 
   farmerColumns = ['Customer Name', 'Product', 'Status', "Date"];

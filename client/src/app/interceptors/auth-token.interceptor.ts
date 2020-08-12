@@ -17,10 +17,10 @@ export class AuthTokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const modifiedRequest = request.clone({
-      headers: request.headers
-        .set('Authorization', `Bearer ${this.authService.tokenValue}`)
-        .append('Content-Type', 'application/json'),
+      headers: request.headers.set('Authorization', `Bearer ${this.authService.tokenValue}`)
+      .set('Content-Type', 'multipart/form-data'),
     });
+
     return next.handle(modifiedRequest);
   }
 }
