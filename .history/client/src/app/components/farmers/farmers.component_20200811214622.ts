@@ -12,9 +12,8 @@ export class FarmersComponent implements OnInit {
   constructor(private _farmerServicce: FarmersService) {}
 
   ngOnInit(): void {
-    this._farmerServicce.showFarmers().subscribe((response:any) => {
+    this._farmerServicce.showFarmers().subscribe((response) => {
       this.farmers = response.data;
     });
-    console.log(this.farmers)
   }
 }

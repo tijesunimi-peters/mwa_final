@@ -11,7 +11,6 @@ export class FarmersService {
   constructor(private http: HttpClient) {}
 
   showFarmers() {
-    console.log(Constants.FARMERS_URL)
     return this.http.get(Constants.FARMERS_URL);
   }
 }

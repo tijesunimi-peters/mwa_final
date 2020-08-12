@@ -6,12 +6,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class FarmersService {
-
+  private _farmersUrl: string = Constants.FARMERS_URL;
 
   constructor(private http: HttpClient) {}
 
   showFarmers() {
-    console.log(Constants.FARMERS_URL)
-    return this.http.get(Constants.FARMERS_URL);
+    return this.http.get<any>(this._farmersUrl);
   }
 }
