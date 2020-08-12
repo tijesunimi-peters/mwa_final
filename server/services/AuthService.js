@@ -6,9 +6,10 @@ class AuthService {
       if(err) return next(err);
 
       if (valid) {
+        const { password, ...details } = req.authUser.toObject();
         req.passForToken = {
           valid: true,
-          user: { _id: req.authUser._id, email: req.authUser.email }
+          user: { ...details }
         }
         return next();
       }

@@ -1,7 +1,8 @@
 var express = require("express");
 var router = express.Router();
-var {UserService} = require('../../../services')
+var {UserService, JwtService} = require('../../../services')
 
+router.use(JwtService.checkToken)
 router.put("/users/farmers/rating",UserService.rate)
 
 

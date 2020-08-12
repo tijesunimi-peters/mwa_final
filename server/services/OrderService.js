@@ -6,6 +6,16 @@ var {
 const {Order} = require("../models");
 
 class OrderService {
+    static all(req, _, next) {
+        Order.find({}).limit(10).then(orders => {
+            req.success = {
+                status: 200,
+                data: orders
+            }
+            next();
+        }).catch(next)
+    }
+
     static createOrder(req, _, next) {
         let newOrder = new Order(req.body);
         newOrder.save(function (err, order) {
