@@ -1,5 +1,5 @@
 export class Constants {
-  static API_BASE = 'https://api-farmart.herokuapp.com';
+  static API_BASE = 'https://api-farmart.herokuapp.com/api/v1';
   static SIGNIN_URL = `${Constants.API_BASE}/signin`;
   static SIGNUP_URL = `${Constants.API_BASE}/users`;
   static PRODUCTS_URL = `${Constants.API_BASE}/products`;

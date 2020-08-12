@@ -58,6 +58,8 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem("authToken");
+    localStorage.removeItem("cart");
+    localStorage.removeItem("user");
     this.reloadToken().subscribe(result => console.log(result));
   }
 

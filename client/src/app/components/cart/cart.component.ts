@@ -1,3 +1,4 @@
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { element } from 'protractor';
 import { CartService } from './../../services/cart.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -12,7 +13,7 @@ export class CartComponent implements OnInit {
   farmer = null;
   @Input() isAuthenticated: boolean = false;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private authService: AuthenticationService) {
     this.cart = this.cartService.cart;
     this.cartService.event.subscribe(this.onAdd);
   }
@@ -26,6 +27,10 @@ export class CartComponent implements OnInit {
 
   onAdd = (event) => {
     console.log(this.items);
+  }
+
+  showCart() {
+    return this.authService.role === "customer"
   }
 
 }
