@@ -10,7 +10,7 @@ const options = {
   }
 };
 
-const URL = process.env.MONGO_URL || `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}`
+const URL = process.env.MONGODB_URI || `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}`
 
 module.exports = (async () => {
   try {
