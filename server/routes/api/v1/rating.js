@@ -1,8 +1,9 @@
 var express = require("express");
 var router = express.Router();
-var {UserService} = require('../../../services')
+var {UserService, JwtService} = require('../../../services')
 
-router.put("/users/farmers/rating",UserService.rate)
+
+router.put("/users/farmers/rating", JwtService.checkToken,UserService.rate)
 
 
 module.exports=router;
