@@ -1,40 +1,59 @@
-<h2>New Orders</h2>
-<table class="uk-table uk-table-striped">
-    <thead>
-        <tr>
-            <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+<h2>Orders</h2>
 
-        </tr>
+<div class="customer_dash" *ngIf="checkUser(); else show_farmer">
+  <table class="uk-table uk-table-striped">
+    <thead>
+        <th *ngFor="let title of headerTitles" scope="col">{{ title }}</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>
+            <span *ngFor="let product of order.products">
+                {{ product.name }} <br />
+            </span>
+        </td>
+
+        <td>{{ order.quantity }}</td>
+
+        <td><span class="uk-button">{{ order.status || 'Pending' }}</span></td>
+        <td>{{order.created_at | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #show_farmer>
+  <table class="uk-table uk-table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let title of headerTitles" scope="col">{{ title }}</th>
+      </tr>
     </thead>
     <tfoot>
-        <tr>
-
-        </tr>
+      <tr></tr>
     </tfoot>
     <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.customer.name }}</td>
 
-        <tr *ngFor="let d of data">
-
-            <td> {{d.customer.name}}</td>
-
-            <td *ngFor="let product of d.products">
-                {{product.name}}
-            </td>
-
-
-            <td> {{d.quantity}}</td>
-
-            <div class="uk-margin">
-                <select class="uk-select">
-                    <option>Pending</option>
-                    <option>Ready</option>
-                    <option>Complete</option>
-                </select>
-
+        <td>
+            <div *ngFor="let product of order.products">
+                {{ product.name }}
             </div>
+        </td>
 
-
-
-        </tr>
+        <td>{{ order.quantity }}</td>
+        <td>
+            <div class="uk-margin">
+              <select class="uk-select">
+                <option>Pending</option>
+                <option>Ready</option>
+                <option>Complete</option>
+              </select>
+            </div>
+        </td>
+        <td>{{order.created_at | date }}</td>
+      </tr>
     </tbody>
-</table>
+  </table>
+</ng-template>
