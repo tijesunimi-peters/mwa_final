@@ -2,6 +2,7 @@ const { Schema, model, Types } = require("mongoose");
 const { hashSync, compareSync } = require("bcrypt");
 
 const UserSchema = new Schema({
+  verified: Boolean,
   username: {
     type: String,
     required: [true, "Username is required"],

@@ -66,7 +66,6 @@ function runService(user) {
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
-      console.log('here')
     if (error) {
       console.log(error);
     } else {

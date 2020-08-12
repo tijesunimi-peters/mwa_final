@@ -23,6 +23,36 @@ class AuthService {
     next();
   }
 
+  static isSuperAdmin(req, _, next) {
+    if(!req.loggedInUser || req.loggedInUser.role !== "superuser") {
+      return next({
+        status: 400,
+        message: "Only for SuperAdmin"
+      })
+    }
+    next();
+  }
+
+  static isCustomer(req, _, next) {
+    if(!req.loggedInUser || req.loggedInUser.role !== "customer") {
+      return next({
+        status: 400,
+        message: "Only for Customers"
+      })
+    }
+    next();
+  }
+
+  static isFarmer(req, _, next) {
+    if(!req.loggedInUser || req.loggedInUser.role !== "farmer") {
+      return next({
+        status: 400,
+        message: "Only for Farmers"
+      })
+    }
+    next();
+  }
+
 }
 
 module.exports = AuthService;
