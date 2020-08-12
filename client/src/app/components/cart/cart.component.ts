@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService) {
     this.cart = this.cartService.cart;
+    this.cartService.event.subscribe(this.onAdd);
   }
 
   ngOnInit(): void {
@@ -23,5 +24,8 @@ export class CartComponent implements OnInit {
     return this.cart.items;
   }
 
+  onAdd = (event) => {
+    console.log(this.items);
+  }
 
 }

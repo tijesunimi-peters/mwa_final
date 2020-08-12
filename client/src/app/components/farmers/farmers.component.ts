@@ -17,4 +17,10 @@ export class FarmersComponent implements OnInit {
       this.farmers = response.data;
     });
   }
+
+  sort(order) {
+    this._farmerServicce.showFarmers(order).subscribe((response) => {
+      this.farmers = response.data;
+    });
+  }
 }

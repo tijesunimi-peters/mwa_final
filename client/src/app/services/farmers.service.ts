@@ -10,7 +10,7 @@ export class FarmersService {
 
   constructor(private http: HttpClient) {}
 
-  showFarmers() {
-    return this.http.get<any>(this._farmersUrl);
+  showFarmers(sort = 1) {
+    return this.http.get<any>(this._farmersUrl + `?rating=${sort}`);
   }
 }

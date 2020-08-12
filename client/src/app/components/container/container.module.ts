@@ -1,3 +1,4 @@
+import { AddToCartDirective } from './../../directives/add-to-cart.directive';
 import { ErrorDisplayComponent } from './../error-display/error-display.component';
 import { UniqueEmailValidator } from './../../validators/email.directive';
 import { OrderService } from '../../services/Order.service';
@@ -28,6 +29,7 @@ import { UsernameValidatorDirective } from '../../validators/username-validator.
     UniqueEmailValidator,
     UsernameValidatorDirective,
     ErrorDisplayComponent,
+    AddToCartDirective
   ],
   imports: [
     // HttpClientModule,
@@ -44,6 +46,7 @@ import { UsernameValidatorDirective } from '../../validators/username-validator.
     UniqueEmailValidator,
     UsernameValidatorDirective,
     ErrorDisplayComponent,
+    AddToCartDirective
   ],
   bootstrap: [ContainerComponent],
 })

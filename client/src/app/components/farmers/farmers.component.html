@@ -1,5 +1,8 @@
 <h2 class="uk-heading-large">Farmers</h2>
 <hr />
+<button class="uk-button uk-button-primary" (click)="sort(1)">Sort: rating(ASC)</button>
+<button class="uk-button uk-button-primary" (click)="sort(-1)">Sort: rating(DESC)</button>
+<hr />
 <error-display [errors]="errors"></error-display>
 <div class="uk-grid">
   <div
@@ -10,8 +13,8 @@
     <div class="uk-thumbnail">
       <figure class="uk-overlay">
         <img
-          src="https://lorempixel.com/600/400/food"
-          width="600"
+          src="http://unsplash.it/400/?random"
+          width="400"
           height="400"
           alt=""
         />

@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   cart = { items: [] }
+
+  event$ = new EventEmitter();
 
   constructor() {
     if(localStorage.getItem("cart")) {
@@ -14,7 +16,17 @@ export class CartService {
     }
   }
 
+  get event() {
+    return this.event$;
+  }
+
   get items() {
     return this.cart.items;
+  }
+
+  add(product) {
+    this.cart.items.push(product);
+    localStorage.setItem("cart", JSON.stringify(this.cart));
+    this.event$.emit("add");
   }
 }
