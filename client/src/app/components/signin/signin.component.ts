@@ -31,9 +31,13 @@ export class SigninComponent implements OnInit {
 
   signinError = (response) => {
     this.errors = response.error.errors;
+    this.signinForm.reset();
   };
 
   signinResponse = (response) => {
+    if(this.authService.role === 'customer') {
+      return this.router.navigate(['app', 'customers', 'farmers']);
+    }
     return this.router.navigate(['dashboard']);
   };
 

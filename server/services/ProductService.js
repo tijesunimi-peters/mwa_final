@@ -33,6 +33,23 @@ class ProductService {
         });
 
     }
+    static findone(req, _, next) {
+        const product_id = new Types.ObjectId(req.params.product_id);
+        const findone = {
+            _id:product_id
+        };
+        Product.findOne(findone, function (err, product) {
+            if (err) 
+                return next(err);
+            
+            req.success = {
+                status: 200,
+                data: product
+            }
+            next()
+        });
+
+    }
 
     static findProductByFarmer(req, _, next) {
         const farmer_id = req.params.farmer_id;

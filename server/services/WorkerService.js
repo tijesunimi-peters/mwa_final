@@ -1,11 +1,10 @@
 
 var nodemailer = require("nodemailer");
 var Mailgen = require('mailgen');
+var jwt = require('jsonwebtoken');
 
 function runService(user) {
-
-  const {email} =user;
-  const{username} =user;
+  const{username, email} = user;
 
   var transporter = nodemailer.createTransport({
     host:process.env.EMAIL_HOST,
@@ -31,11 +30,16 @@ function runService(user) {
           // logo: 'https://mailgen.js/img/logo.png'
       }
   });
+
+  const token = jwt.sign({
+    exp: Math.floor(Date.now() / 1000) + (60 * 10),
+    data: user
+  }, process.env.JWT_SECRET);
   
   // Prepare email contents
   var emailgen = {
       body: {
-        greeting: 'Dear',
+        greeting: 'Dear ' + username,
         signature: 'Sincerely',
           name:username,
           intro: 'Welcome to farmmart! We’re very excited to have you on board.',
@@ -44,7 +48,7 @@ function runService(user) {
               button: {
                   color: 'green',
                   text: 'login',
-                  link: process.env.BASE_FOUNTEND_HOST+'/email-verification',
+                  link: process.env.BASE_FOUNTEND_HOST+'/email-verification/'+token,
               }
           },
           outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
@@ -62,7 +66,6 @@ function runService(user) {
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
-      console.log('here')
     if (error) {
       console.log(error);
     } else {

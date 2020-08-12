@@ -1,6 +1,8 @@
 const { Schema, model, Types } = require("mongoose");
 
 const orderSchema = new Schema({
+  created_at: Date,
+  updated_at: Date,
   products: [
     {
       _id: {
@@ -39,5 +41,15 @@ const orderSchema = new Schema({
   quantity: { type: Number, default: 1 },
   status: String,
 });
+
+orderSchema.pre("save", function(next) {
+  this.created_at = new Date();
+  next();
+})
+
+orderSchema.pre("update", function(next) {
+  this.updated_at = new Date();
+  next();
+})
 
 module.exports = model("Order", orderSchema);

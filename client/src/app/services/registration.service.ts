@@ -8,6 +8,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 @Injectable()
 export class RegistrationService {
   register$ = new Subject();
+  user:any;
+  myStorage = window.localStorage;
   verify$ = new Subject();
 
   constructor(
@@ -20,6 +22,10 @@ export class RegistrationService {
     return this.register$;
   }
 
+  getLocalStorage(){
+    return this.myStorage;
+  }
+  
   get verifySubject() {
     return this.verify$;
   }
@@ -37,10 +43,12 @@ export class RegistrationService {
   }
 
   setupRegistrationPipeline() {
+
     return this.register$.asObservable().pipe(
       flatMap((user) => {
         return from(this.http.post(Constants.SIGNUP_URL, user))
       })
     );
+    
   }
 }
