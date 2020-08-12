@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FarmersComponent implements OnInit {
   public farmers = [];
+  errors = [];
 
   constructor(private _farmerServicce: FarmersService) {}
 

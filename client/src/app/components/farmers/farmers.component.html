@@ -1,10 +1,35 @@
-
-<div>
-    <ul class="uk-list uk-list-line">
-        <li> <strong>Farmer Lists</strong> </li>
-        <li  class=".uk-list-space" *ngFor="let farmer of farmers">
-            {{ farmer.username }}
-        </li>
-    </ul>
-
+<h2 class="uk-heading-large">Farmers</h2>
+<hr />
+<error-display [errors]="errors"></error-display>
+<div class="uk-grid">
+  <div
+    class="uk-width-1-3 uk-margin-bottom"
+    data-uk-grid-margin=""
+    *ngFor="let farmer of farmers; let id = index"
+  >
+    <div class="uk-thumbnail">
+      <figure class="uk-overlay">
+        <img
+          src="https://lorempixel.com/600/400/food"
+          width="600"
+          height="400"
+          alt=""
+        />
+        <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-bottom">
+          <div class="">
+            <h2>{{ farmer.username }}</h2>
+            <span>Rating: {{ farmer.rating }}</span>
+            <div>
+              <a
+                class="uk-button uk-button-small uk-button-primary"
+                [routerLink]="['/app', 'customers', farmer._id, 'products']"
+              >
+                Browse Products
+              </a>
+            </div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
 </div>
