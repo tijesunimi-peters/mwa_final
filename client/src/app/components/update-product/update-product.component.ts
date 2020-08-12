@@ -87,7 +87,7 @@ export class UpdateProductComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
-    this.service.getone(id).subscribe((result: any) => {
+    this.service.getProduct(id).subscribe((result: any) => {
       this.product = result.data;
       console.log(this.product);
     });

@@ -10,7 +10,7 @@ export class ProductsComponent implements OnInit {
   data: any;
 
   constructor(private viewProduct: ProductsService) {
-    viewProduct.getproducts().subscribe((result: any) => {
+    viewProduct.getProducts().subscribe((result: any) => {
       this.data = result.data;
     });
   }

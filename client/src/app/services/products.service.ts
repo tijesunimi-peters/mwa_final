@@ -9,19 +9,23 @@ import { HttpClient } from '@angular/common/http';
 export class ProductsService {
   data: any;
 
-  constructor(private http: HttpClient, private authService: AuthenticationService) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthenticationService
+  ) {}
 
-  getproducts(): any {
+  getProducts(): any {
     return this.http.get(Constants.PRODUCTS_URL);
   }
-  getproductwithid(id: string) {
+
+  getFarmerProducts(id: string) {
     return this.http.get(Constants.PRODUCTS_URL + '/all/' + id);
   }
-  getone(id: String) {
+  getProduct(id: String) {
     return this.http.get(Constants.PRODUCTS_URL + '/' + id);
   }
 
-  deleteproductwithid(id: string) {
+  delete(id: string) {
     return this.http.delete(Constants.PRODUCTS_URL + '/' + id);
   }
 
@@ -32,17 +36,13 @@ export class ProductsService {
     formdata.append('category', product.category);
     formdata.append('description', product.description);
     formdata.append('farmer[_id]', product.farmer._id);
-    formdata.append('farmer[name]', product.name);
-    formdata.append('farmer[email]', product.email);
-    formdata.append('image', product.image);
+    formdata.append('farmer[name]', product.farmer.name);
+    formdata.append('farmer[email]', product.farmer.email);
+    if(product.image) {
+      formdata.append('image', product.image);
+    }
     formdata.append('price', product.price);
 
-    console.log(product);
-
-    return this.http.post(Constants.PRODUCTS_URL, formdata, { 
-      headers: {
-        "Authorization": "Bearer " + this.authService.tokenValue
-      }
-    });
+    return this.http.post(Constants.PRODUCTS_URL, formdata);
   }
 }

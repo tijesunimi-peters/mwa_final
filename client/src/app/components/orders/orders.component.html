@@ -1,31 +1,39 @@
 <h2>Orders</h2>
 <div *ngIf="orders.length === 0">
-  <h3>No products yet</h3>
+  <h3>No orders yet</h3>
 </div>
 <div *ngIf="orders.length > 0">
-
   <div class="customer_dash" *ngIf="checkUser(); else show_farmer">
     <table class="uk-table uk-table-striped">
       <thead>
-          <th *ngFor="let title of headerTitles" scope="col">{{ title }}</th>
+        <th *ngFor="let title of headerTitles" scope="col">{{ title }}</th>
       </thead>
       <tbody>
         <tr *ngFor="let order of orders">
           <td>
-              <span *ngFor="let product of order.products">
-                  {{ product.name }} <br />
-              </span>
+            <ul class="uk-nav uk-nav-parent-icon" data-uk-nav="">
+              <li class="uk-parent">
+                <a href="#">Products</a>
+                <ul class="uk-nav-sub">
+                  <li *ngFor="let product of order.products">
+                    <a href="#">{{ product.name }}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </td>
-  
+
           <td>{{ order.quantity }}</td>
-  
-          <td><span class="uk-button">{{ order.status || 'Pending' }}</span></td>
-          <td>{{order.created_at | date }}</td>
+
+          <td>
+            <span class="uk-button">{{ order.status || "Pending" }}</span>
+          </td>
+          <td>{{ order.created_at | date }}</td>
         </tr>
       </tbody>
     </table>
   </div>
-  
+
   <ng-template #show_farmer>
     <table class="uk-table uk-table-striped">
       <thead>
@@ -39,24 +47,24 @@
       <tbody>
         <tr *ngFor="let order of orders">
           <td>{{ order.customer.name }}</td>
-  
+
           <td>
-              <div *ngFor="let product of order.products">
-                  {{ product.name }}
-              </div>
+            <div *ngFor="let product of order.products">
+              {{ product.name }}
+            </div>
           </td>
-  
+
           <td>{{ order.quantity }}</td>
           <td>
-              <div class="uk-margin">
-                <select class="uk-select">
-                  <option>Pending</option>
-                  <option>Ready</option>
-                  <option>Complete</option>
-                </select>
-              </div>
+            <div class="uk-margin">
+              <select class="uk-select">
+                <option>Pending</option>
+                <option>Ready</option>
+                <option>Complete</option>
+              </select>
+            </div>
           </td>
-          <td>{{order.created_at | date }}</td>
+          <td>{{ order.created_at | date }}</td>
         </tr>
       </tbody>
     </table>
